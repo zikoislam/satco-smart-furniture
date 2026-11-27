@@ -1,3 +1,63 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --background: #0b1120;
+  --foreground: #f8fafc;
+  --surface-card: #1e293b;
+  --surface-border: #334155;
+  --brand-primary: #ea580c;
+  --brand-hover: #c2410c;
+  --brand-light: #2a1205;
+  --brand-ring: rgba(234, 88, 12, 0.4);
+  --brand-gradient: linear-gradient(135deg, #fb923c 0%, #ea580c 50%, #c2410c 100%);
+}
+
+.dark {
+  --background: #0b1120;
+  --foreground: #f8fafc;
+  --surface-card: #1e293b;
+  --surface-border: #334155;
+  --brand-light: #2a1205;
+  --brand-ring: rgba(251, 146, 60, 0.4);
+}
+
+.bg-surface-card {
+  background-color: var(--surface-card) !important;
+}
+
+.border-surface-card {
+  border-color: var(--surface-border) !important;
+}
+
+.bg-brand-primary {
+  background-color: var(--brand-primary) !important;
+}
+
+.hover\:bg-brand-hover:hover {
+  background-color: var(--brand-hover) !important;
+}
+
+.text-brand-primary {
+  color: var(--brand-primary) !important;
+}
+
+.border-brand-primary {
+  border-color: var(--brand-primary) !important;
+}
+
+.bg-brand-gradient {
+  background: var(--brand-gradient) !important;
+}
+
+.bg-brand-light {
+  background-color: var(--brand-light) !important;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
