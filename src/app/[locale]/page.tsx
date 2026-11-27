@@ -9,6 +9,39 @@ export default function HomePage() {
   const isAr = locale === 'ar';
   const [searchCategory, setSearchCategory] = useState('ALL');
   const [searchQuery, setSearchQuery] = useState('');
+  const [activeBannerIndex, setActiveBannerIndex] = useState(0);
+
+  // 4 Luxury Furniture Banner Images for 3-Second Auto-Slider
+  const bannerImages = [
+    {
+      url: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1000&auto=format&fit=crop&q=85',
+      titleAr: 'خزائن ملابس نيوكلاسيكية وعصرية متكاملة',
+      titleEn: 'Luxury Integrated Bespoke Wardrobes',
+    },
+    {
+      url: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=1000&auto=format&fit=crop&q=85',
+      titleAr: 'مطابخ ألمانية ذكية بسكك بلوم الهيدروليكية',
+      titleEn: 'Smart German Kitchens with Blum Systems',
+    },
+    {
+      url: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1000&auto=format&fit=crop&q=85',
+      titleAr: 'وحدات تلفزيون معلقة مع بديل الرخام وخشب إيجر',
+      titleEn: 'Floating TV Units with Halifax Natural Oak',
+    },
+    {
+      url: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1000&auto=format&fit=crop&q=85',
+      titleAr: 'ديكورات مجالس وغرف معيشة سعودية فاخرة',
+      titleEn: 'Luxury Saudi Majlis & Living Room Concepts',
+    },
+  ];
+
+  // Auto-rotate banner every 3 seconds (3000ms)
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveBannerIndex((prev) => (prev + 1) % bannerImages.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [bannerImages.length]);
 
   // Categories aligned with SATCO custom furniture
   const categories = [
@@ -234,15 +267,47 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Right Banner Image with Smooth Fade Blend */}
-            <div className="relative w-full md:w-1/2 h-64 md:h-full min-h-[340px] overflow-hidden">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1000&auto=format&fit=crop&q=85"
-                alt="Luxury Modern Custom Furniture Interior"
-                className="w-full h-full object-cover object-center"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#FFFFFF] via-transparent to-transparent md:w-28" />
+            {/* Right Banner Image Carousel with Smooth 3-Second Crossfade & Dot Indicators */}
+            <div className="relative w-full md:w-1/2 h-72 md:h-full min-h-[360px] overflow-hidden group">
+              {bannerImages.map((b, idx) => (
+                <div
+                  key={idx}
+                  className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                    activeBannerIndex === idx ? 'opacity-100 scale-100' : 'opacity-0 scale-105 pointer-events-none'
+                  }`}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={b.url}
+                    alt={b.titleEn}
+                    className="w-full h-full object-cover object-center transition-transform duration-7000 ease-out"
+                  />
+                  {/* Image Caption Pill */}
+                  <div className="absolute bottom-4 end-4 bg-black/65 backdrop-blur-xs text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-md">
+                    {isAr ? b.titleAr : b.titleEn}
+                  </div>
+                </div>
+              ))}
+
+              {/* Edge Gradient Blend with Card */}
+              <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#FFFFFF] via-transparent to-transparent md:w-28 pointer-events-none" />
+
+              {/* 3-Second Dots Navigation */}
+              <div className="absolute bottom-4 start-6 z-20 flex items-center gap-1.5">
+                {bannerImages.map((_, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => setActiveBannerIndex(idx)}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      activeBannerIndex === idx
+                        ? 'w-6 bg-[#3665F3]'
+                        : 'w-2 bg-black/30 hover:bg-black/60'
+                    }`}
+                    title={`Slide ${idx + 1}`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
 
