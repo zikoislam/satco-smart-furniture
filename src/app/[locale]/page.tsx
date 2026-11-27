@@ -1,156 +1,449 @@
-import { useLocale, useTranslations } from 'next-intl';
+'use client';
+
+import React, { useState } from 'react';
+import { useLocale } from 'next-intl';
 import Link from 'next/link';
-import { ThemeSwitcher } from '@/components/theme/ThemeSwitcher';
 
 export default function HomePage() {
   const locale = useLocale();
-  const tBrand = useTranslations('Brand');
-  const tNav = useTranslations('Nav');
-  const tHero = useTranslations('Hero');
-  const tCommon = useTranslations('Common');
+  const isAr = locale === 'ar';
+  const [searchCategory, setSearchCategory] = useState('ALL');
+  const [searchQuery, setSearchQuery] = useState('');
+
+  // Categories aligned with SATCO custom furniture
+  const categories = [
+    { id: 'wardrobes', nameAr: 'خزائن ملابس مخصصة', nameEn: 'Custom Wardrobes', icon: '🚪' },
+    { id: 'kitchens', nameAr: 'مطابخ ألمانية وبلوم', nameEn: 'Kitchen Cabinets', icon: '🍳' },
+    { id: 'tv_units', nameAr: 'طاولات ووحدات تلفزيون', nameEn: 'TV Entertainment', icon: '📺' },
+    { id: 'majlis', nameAr: 'ديكورات مجالس نجدية', nameEn: 'Saudi Majlis Fit-outs', icon: '🛋️' },
+    { id: 'sample_box', nameAr: 'صناديق عينات الخشب', nameEn: 'Material Sample Boxes', icon: '📦' },
+    { id: 'ai_studio', nameAr: 'استوديو الذكاء الاصطناعي', nameEn: 'AI Design Studio', icon: '✨' },
+    { id: 'hardware', nameAr: 'مفصلات وسكك Blum', nameEn: 'Blum Hardware', icon: '⚙️' },
+  ];
+
+  // Best selling products in eBay card format
+  const featuredFurniture = [
+    {
+      id: 'w-01',
+      titleAr: 'خزانة ملابس فاخرة ٤ أبواب سحاب مع مرآة ذكية وإضاءة داخلية',
+      titleEn: '4-Door Sliding Wardrobe with Smart LED & Integrated Mirror',
+      rating: '4.9',
+      reviews: 142,
+      priceSar: 4850,
+      prevPriceSar: 5600,
+      freeShipping: true,
+      tag: 'BESTSELLER',
+      imageUrl: 'https://images.unsplash.com/photo-1558997519-83ea9252edf8?w=500&auto=format&fit=crop&q=80',
+    },
+    {
+      id: 'k-02',
+      titleAr: 'طقم خزائن مطبخ ألماني مع أرفف مقاومة للرطوبة وسكك بلوم ناعمة',
+      titleEn: 'German Modular Kitchen Pantry with Blum Soft-Close Systems',
+      rating: '4.8',
+      reviews: 89,
+      priceSar: 7900,
+      prevPriceSar: 8950,
+      freeShipping: true,
+      tag: 'TOP RATED',
+      imageUrl: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=500&auto=format&fit=crop&q=80',
+    },
+    {
+      id: 't-03',
+      titleAr: 'وحدة تلفزيون جدارية بتصميم مينيمال مع بديل الرخام وخشب السنديان',
+      titleEn: 'Floating Minimalist Wall TV Unit with Egger Halifax Natural Oak',
+      rating: '4.9',
+      reviews: 215,
+      priceSar: 2850,
+      prevPriceSar: 3200,
+      freeShipping: true,
+      tag: 'TRENDING',
+      imageUrl: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=500&auto=format&fit=crop&q=80',
+    },
+    {
+      id: 's-04',
+      titleAr: 'صندوق عينات خشب إيجر النمساوي (١٠ خامات + ألوان مع شحن مجاني)',
+      titleEn: 'Egger Material Sample Box (10 Finishes + Rehau Edge-banding)',
+      rating: '5.0',
+      reviews: 630,
+      priceSar: 150,
+      prevPriceSar: 250,
+      freeShipping: true,
+      tag: 'REFUNDABLE',
+      imageUrl: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?w=500&auto=format&fit=crop&q=80',
+    },
+  ];
 
   return (
-    <main className="mx-auto flex min-h-screen max-w-7xl flex-col justify-between px-6 py-8">
-      {/* Top Header */}
-      <header className="flex flex-col md:flex-row items-center justify-between border-b border-surface-border pb-6 gap-4">
-        <div>
-          <div className="flex items-center gap-2">
-            <span className="bg-brand-primary text-white font-black text-xs px-2.5 py-0.5 rounded-full shadow-md shadow-brand-500/20">
-              KSA 2030
+    <div className="min-h-screen bg-[#F7F7F7] text-[#191919] font-sans">
+      {/* 1. eBay-Style Top Notification Bar */}
+      <div className="bg-[#FFFFFF] border-b border-[#E5E5E5] text-[12px] text-[#707070] py-1.5 px-4 md:px-8">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <span>
+              {isAr ? 'مرحباً بك في منصة ساتكو للأثاث الذكي!' : 'Welcome to SATCO Smart Furniture!'}
             </span>
-            <h1 className="text-2xl font-black tracking-tight">
-              {tBrand('name')}
-            </h1>
+            <span className="hidden sm:inline text-[#E5E5E5]">|</span>
+            <Link href={`/${locale}/login`} className="text-[#3665F3] hover:underline font-semibold">
+              {isAr ? 'تسجيل الدخول / حساب جديد' : 'Sign in or register'}
+            </Link>
           </div>
-          <p className="text-xs text-theme-muted mt-1">{tBrand('tagline')}</p>
-        </div>
-
-        {/* Navigation & Controls */}
-        <div className="flex flex-wrap items-center gap-4">
-          <nav className="flex flex-wrap items-center gap-4 text-sm font-semibold">
-            <Link href={`/${locale}`} className="hover:text-brand-primary transition">
-              {tNav('home')}
+          <div className="flex items-center gap-4">
+            <span className="hidden md:inline font-medium">🇸🇦 {isAr ? 'ضريبة القيمة المضافة ١٥٪ مشمولة' : '15% ZATCA VAT Included'}</span>
+            <Link href={`/${locale}/admin`} className="hover:underline">
+              {isAr ? 'بوابة الإدارة والمصنع' : 'Factory Portal'}
             </Link>
-            <Link href={`/${locale}/ai-studio`} className="text-brand-primary hover:opacity-85 font-bold flex items-center gap-1 transition">
-              <span>✨</span>
-              <span>{locale === 'ar' ? 'استوديو الذكاء الاصطناعي' : 'AI Design Studio'}</span>
-            </Link>
-            <Link href={`/${locale}/configurator`} className="hover:text-brand-primary transition">
-              {tNav('configurator')}
-            </Link>
-            <Link href={`/${locale}/sample-box`} className="hover:text-brand-primary transition">
-              {tNav('sampleBox')}
-            </Link>
-            <Link href={`/${locale}/cart`} className="hover:text-brand-primary transition">
-              {locale === 'ar' ? 'السلة' : 'Cart'}
-            </Link>
-            <Link href={`/${locale}/dashboard`} className="hover:text-brand-primary transition">
-              {tNav('orders')}
-            </Link>
-            <Link href={`/${locale}/admin`} className="text-theme-muted hover:text-brand-primary transition">
-              {locale === 'ar' ? 'لوحة التحكم' : 'ERP Portal'}
-            </Link>
-          </nav>
-
-          {/* Theme Color Switcher & Language Switcher */}
-          <div className="flex items-center gap-2 border-s ps-3 border-surface-border">
-            <ThemeSwitcher />
-            <div className="flex gap-1 bg-surface-card p-1 rounded-xl border border-surface-border">
-              <Link
-                href="/ar"
-                className={`rounded-lg px-2 py-1 text-xs font-bold transition ${
-                  locale === 'ar' ? 'bg-brand-primary text-white' : 'text-theme-muted hover:text-brand-primary'
-                }`}
-              >
+            <div className="flex gap-1 border-s ps-2 border-[#E5E5E5]">
+              <Link href="/ar" className={`px-1.5 py-0.5 rounded text-[11px] font-bold ${isAr ? 'bg-[#3665F3] text-white' : 'hover:bg-gray-100'}`}>
                 العربية
               </Link>
-              <Link
-                href="/en"
-                className={`rounded-lg px-2 py-1 text-xs font-bold transition ${
-                  locale === 'en' ? 'bg-brand-primary text-white' : 'text-theme-muted hover:text-brand-primary'
-                }`}
-              >
+              <Link href="/en" className={`px-1.5 py-0.5 rounded text-[11px] font-bold ${!isAr ? 'bg-[#3665F3] text-white' : 'hover:bg-gray-100'}`}>
                 EN
               </Link>
             </div>
           </div>
         </div>
+      </div>
+
+      {/* 2. eBay-Style Clean White Header & Iconic Search Bar */}
+      <header className="bg-[#FFFFFF] border-b border-[#E5E5E5] py-3.5 px-4 md:px-8 sticky top-0 z-40 shadow-xs">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+          {/* Logo with eBay-style friendly clean typography */}
+          <Link href={`/${locale}`} className="flex items-center gap-1.5 text-2xl font-black tracking-tight shrink-0">
+            <span className="text-[#E53238]">S</span>
+            <span className="text-[#3665F3]">A</span>
+            <span className="text-[#F5AF02]">T</span>
+            <span className="text-[#86B817]">C</span>
+            <span className="text-[#3665F3]">O</span>
+            <span className="text-[11px] bg-[#F2F2F2] px-2 py-0.5 rounded-full text-[#707070] font-bold ms-1">
+              FURNITURE
+            </span>
+          </Link>
+
+          {/* Large eBay Pill Search Bar */}
+          <div className="flex-1 w-full max-w-3xl flex items-center">
+            <div className="w-full flex items-center border-2 border-[#191919] rounded-full overflow-hidden hover:border-[#3665F3] focus-within:border-[#3665F3] transition bg-white shadow-xs">
+              <span className="ps-4 text-gray-400 text-sm">🔍</span>
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder={isAr ? 'ابحث عن أي خزانة، مطبخ، خامات Egger، أو تصميم...' : 'Search for any wardrobe, kitchen, materials, or custom piece...'}
+                className="w-full py-2.5 px-3 text-sm focus:outline-none bg-transparent"
+              />
+              <div className="hidden sm:block border-s border-[#E5E5E5] px-2">
+                <select
+                  value={searchCategory}
+                  onChange={(e) => setSearchCategory(e.target.value)}
+                  className="text-xs text-[#707070] bg-transparent py-2 px-1 focus:outline-none cursor-pointer"
+                >
+                  <option value="ALL">{isAr ? 'جميع الأقسام' : 'All Categories'}</option>
+                  <option value="WARDROBES">{isAr ? 'خزائن' : 'Wardrobes'}</option>
+                  <option value="KITCHENS">{isAr ? 'مطابخ' : 'Kitchens'}</option>
+                  <option value="TV">{isAr ? 'وحدات تلفزيون' : 'TV Units'}</option>
+                </select>
+              </div>
+              <button
+                type="button"
+                className="bg-[#3665F3] hover:bg-[#2B54CF] text-white px-7 py-3 text-sm font-bold transition flex items-center justify-center shrink-0"
+              >
+                {isAr ? 'بحث' : 'Search'}
+              </button>
+            </div>
+          </div>
+
+          {/* Quick Cart & Action Links */}
+          <div className="flex items-center gap-5 text-sm font-semibold shrink-0">
+            <Link href={`/${locale}/dashboard`} className="flex flex-col text-xs text-[#707070] hover:text-[#191919]">
+              <span className="text-[11px] text-gray-400">{isAr ? 'متابعة' : 'Track'}</span>
+              <span className="font-bold text-[#191919]">{isAr ? 'طلباتي' : 'My Orders'}</span>
+            </Link>
+            <Link
+              href={`/${locale}/cart`}
+              className="relative p-2.5 bg-[#F2F2F2] hover:bg-[#E5E5E5] rounded-full transition flex items-center justify-center text-lg"
+            >
+              🛒
+              <span className="absolute -top-1 -right-1 bg-[#E53238] text-white text-[10px] font-black rounded-full w-5 h-5 flex items-center justify-center border-2 border-white">
+                1
+              </span>
+            </Link>
+          </div>
+        </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="my-auto py-12 md:py-16">
-        <div className="inline-flex items-center gap-2 rounded-full bg-surface-card border border-surface-border px-4 py-1.5 text-xs font-bold text-brand-primary mb-6 shadow-sm">
-          <span>🇸🇦</span>
-          <span>{tCommon('vatIncluded')} · ZATCA Phase 2 E-Invoicing</span>
+      {/* 3. Category Strip (Like eBay Category Navigation) */}
+      <nav className="bg-[#FFFFFF] border-b border-[#E5E5E5] px-4 md:px-8 py-2 overflow-x-auto">
+        <div className="max-w-7xl mx-auto flex items-center gap-6 text-xs font-semibold whitespace-nowrap text-[#555555]">
+          <Link href={`/${locale}`} className="text-[#3665F3] font-bold border-b-2 border-[#3665F3] pb-1">
+            {isAr ? 'الرئيسية' : 'Home'}
+          </Link>
+          <Link href={`/${locale}/ai-studio`} className="flex items-center gap-1 text-[#E53238] font-bold hover:text-[#B91C1C]">
+            <span>✨</span>
+            <span>{isAr ? 'استوديو الذكاء الاصطناعي (AI Studio)' : 'AI Room Designer'}</span>
+          </Link>
+          <Link href={`/${locale}/configurator`} className="hover:text-[#3665F3]">
+            {isAr ? 'المصمم ثلاثي الأبعاد 3D' : '3D Customizer'}
+          </Link>
+          <Link href={`/${locale}/sample-box`} className="hover:text-[#3665F3]">
+            {isAr ? 'طلب صندوق العينات (١٥٠ ر.س)' : 'Sample Box Kit'}
+          </Link>
+          <Link href={`/${locale}/configurator?cat=wardrobes`} className="hover:text-[#3665F3]">
+            {isAr ? 'خزائن ملابس' : 'Wardrobes'}
+          </Link>
+          <Link href={`/${locale}/configurator?cat=kitchens`} className="hover:text-[#3665F3]">
+            {isAr ? 'مطابخ حديثة' : 'Kitchens'}
+          </Link>
+          <Link href={`/${locale}/admin`} className="hover:text-[#3665F3] ms-auto text-gray-400">
+            {isAr ? 'لوحة تحكم التصنيع' : 'ERP Factory'}
+          </Link>
         </div>
-        <h2 className="max-w-4xl text-4xl md:text-6xl font-black leading-tight tracking-tight">
-          {tHero('title')}
-        </h2>
-        <p className="mt-4 max-w-2xl text-lg text-theme-muted leading-relaxed font-normal">
-          {tHero('subtitle')}
-        </p>
+      </nav>
 
-        {/* Feature CTA Grid */}
-        <div className="mt-10 flex flex-wrap gap-4">
-          <Link
-            href={`/${locale}/ai-studio`}
-            className="rounded-xl bg-brand-gradient hover:opacity-90 px-7 py-3.5 text-sm font-bold text-white shadow-xl shadow-brand-500/25 transition transform hover:-translate-y-0.5"
-          >
-            {locale === 'ar' ? 'جرّب استوديو التصميم الذكي AI ✨' : 'Launch AI Design Studio ✨'}
-          </Link>
-          <Link
-            href={`/${locale}/configurator`}
-            className="rounded-xl bg-surface-card hover:border-brand-primary border border-surface-border px-7 py-3.5 text-sm font-bold transition shadow-sm"
-          >
-            {tHero('ctaPrimary')}
-          </Link>
-          <Link
-            href={`/${locale}/sample-box`}
-            className="rounded-xl border border-surface-border bg-surface-card px-7 py-3.5 text-sm font-semibold text-theme-muted hover:text-brand-primary transition shadow-sm"
-          >
-            {tNav('sampleBox')}
-          </Link>
+      <main className="max-w-7xl mx-auto px-4 md:px-8 py-6 space-y-8">
+        {/* 4. eBay-Style Clean Hero Banner with 2-Card Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          {/* Main Hero Promotion Card */}
+          <div className="lg:col-span-8 bg-[#FFFFFF] rounded-2xl border border-[#E5E5E5] p-6 md:p-10 flex flex-col justify-between shadow-xs relative overflow-hidden">
+            <div className="max-w-xl z-10 space-y-3">
+              <div className="inline-flex items-center gap-1.5 bg-[#FFF2DE] text-[#C05621] px-3 py-1 rounded-full text-xs font-bold">
+                <span>⚡</span>
+                <span>{isAr ? 'عروض التصنيع الرقمي المباشر بالرياض' : 'Direct Digital CNC Fabrication in KSA'}</span>
+              </div>
+              <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-[#191919] leading-tight">
+                {isAr ? 'صمّم أثاثك بالمليمتر مع تسعير فوري' : 'Custom Precision Furniture Built to the Millimeter'}
+              </h2>
+              <p className="text-sm text-[#707070] leading-relaxed">
+                {isAr
+                  ? 'خزائن ومطابخ مصنعة بماكينات Homag الألمانية وخامات Egger النمساوية مع إمكانية المعاينة بالواقع المعزز 1:1 والدفع على ٣ مراحل.'
+                  : 'Wardrobes & kitchens engineered with German CNC precision and Austrian Egger wood. Preview in 1:1 AR and pay in 3 milestone stages.'}
+              </p>
+              <div className="flex flex-wrap items-center gap-3 pt-3">
+                <Link
+                  href={`/${locale}/configurator`}
+                  className="bg-[#3665F3] hover:bg-[#2B54CF] text-white px-6 py-3 rounded-full text-sm font-bold shadow-sm transition"
+                >
+                  {isAr ? 'ابدأ التصميم ثلاثي الأبعاد 3D →' : 'Launch 3D Configurator →'}
+                </Link>
+                <Link
+                  href={`/${locale}/ai-studio`}
+                  className="bg-[#F2F2F2] hover:bg-[#E5E5E5] text-[#191919] border border-[#CCCCCC] px-6 py-3 rounded-full text-sm font-bold transition flex items-center gap-1.5"
+                >
+                  <span>✨</span>
+                  <span>{isAr ? 'استوديو الذكاء الاصطناعي' : 'AI Room Designer'}</span>
+                </Link>
+              </div>
+            </div>
+
+            {/* Subtle decorative background graphic */}
+            <div className="absolute -bottom-10 -right-10 w-72 h-72 bg-gradient-to-br from-blue-50 to-orange-50 rounded-full blur-2xl opacity-70 pointer-events-none" />
+          </div>
+
+          {/* Right Highlight Side-Banner: Sample Box Kit */}
+          <div className="lg:col-span-4 bg-[#FFFFFF] rounded-2xl border border-[#E5E5E5] p-6 flex flex-col justify-between shadow-xs">
+            <div>
+              <span className="text-[11px] font-black text-[#E53238] uppercase tracking-wider">
+                {isAr ? 'ضمان استرداد ١٠٠٪' : '100% REFUNDABLE'}
+              </span>
+              <h3 className="text-xl font-bold text-[#191919] mt-1">
+                {isAr ? 'صندوق عينات الخشب والمفصلات' : 'Material Sample Box Kit'}
+              </h3>
+              <p className="text-xs text-[#707070] mt-2 leading-relaxed">
+                {isAr
+                  ? 'اطلب عينات خشب إيجر ومفصلات بلوم لتفحص الجودة في منزلك. يسترد المبلغ كاملاً عند تعميد طلبك!'
+                  : 'Touch and feel premium Austrian Egger wood panels and Blum hardware before ordering. Fee refunded on your order!'}
+              </p>
+              <div className="mt-4 flex items-baseline gap-2">
+                <span className="text-2xl font-black text-[#191919]">150 SAR</span>
+                <span className="text-xs text-[#707070] line-through">250 SAR</span>
+                <span className="text-xs font-bold text-[#86B817]">{isAr ? 'خصم ٤٠٪' : '40% OFF'}</span>
+              </div>
+            </div>
+
+            <Link
+              href={`/${locale}/sample-box`}
+              className="mt-6 w-full text-center bg-[#191919] hover:bg-black text-white py-2.5 px-4 rounded-full text-xs font-bold transition"
+            >
+              {isAr ? 'اطلب صندوق العينات الآن' : 'Order Sample Box Kit'}
+            </Link>
+          </div>
         </div>
 
-        {/* 4 Pillars Highlight */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-16 pt-8 border-t border-surface-border">
-          <div className="p-6 bg-surface-card rounded-2xl border border-surface-border hover:border-brand-primary transition shadow-sm">
-            <div className="text-3xl mb-3">📐</div>
-            <h4 className="font-bold text-base">تصميم وتصنيع بالمليمتر</h4>
-            <p className="text-xs text-theme-muted mt-1.5 leading-relaxed">توليد تلقائي لكود ماكينات Homag CNC وBOM دقيق</p>
+        {/* 5. Circular Category Quick Icons (Like eBay Visual Category browser) */}
+        <section className="bg-[#FFFFFF] rounded-2xl border border-[#E5E5E5] p-6 shadow-xs">
+          <h3 className="text-base font-bold text-[#191919] mb-4">
+            {isAr ? 'تصفح حسب فئات الأثاث والمشاريع' : 'Explore Custom Furniture Categories'}
+          </h3>
+          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-4">
+            {categories.map((c) => (
+              <Link
+                key={c.id}
+                href={`/${locale}/configurator`}
+                className="group flex flex-col items-center text-center p-3 rounded-xl hover:bg-[#F7F7F7] transition"
+              >
+                <div className="w-14 h-14 rounded-full bg-[#F2F2F2] group-hover:bg-[#E5E5E5] flex items-center justify-center text-2xl transition shadow-2xs">
+                  {c.icon}
+                </div>
+                <span className="text-xs font-semibold text-[#191919] mt-2 group-hover:text-[#3665F3] transition">
+                  {isAr ? c.nameAr : c.nameEn}
+                </span>
+              </Link>
+            ))}
           </div>
-          <div className="p-6 bg-surface-card rounded-2xl border border-surface-border hover:border-brand-primary transition shadow-sm">
-            <div className="text-3xl mb-3">🤖</div>
-            <h4 className="font-bold text-base">ذكاء اصطناعي تفاعلي</h4>
-            <p className="text-xs text-theme-muted mt-1.5 leading-relaxed">تصميم الغرف والمفروشات مع التحقق الإلزامي من المقاسات</p>
-          </div>
-          <div className="p-6 bg-surface-card rounded-2xl border border-surface-border hover:border-brand-primary transition shadow-sm">
-            <div className="text-3xl mb-3">📱</div>
-            <h4 className="font-bold text-base">واقع معزز 1:1 AR</h4>
-            <p className="text-xs text-theme-muted mt-1.5 leading-relaxed">معاينة القطع داخل منزلك بالحجم الحقيقي قبل الشراء</p>
-          </div>
-          <div className="p-6 bg-surface-card rounded-2xl border border-surface-border hover:border-brand-primary transition shadow-sm">
-            <div className="text-3xl mb-3">🛡️</div>
-            <h4 className="font-bold text-base">دفعات مجدولة وضمان</h4>
-            <p className="text-xs text-theme-muted mt-1.5 leading-relaxed">دفع ٥٠٪-٤٠٪-١٠٪ مع فواتير زكاة وضمان رقمي معتمد</p>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Footer */}
-      <footer className="border-t border-surface-border pt-6 text-xs text-theme-muted flex flex-col md:flex-row items-center justify-between gap-4">
-        <div>
-          SATCO Smart Furniture Platform · Riyadh, Kingdom of Saudi Arabia ({tCommon('currency')})
+        {/* 6. eBay-Style Product Grid ("Today's Featured Custom Furniture") */}
+        <section className="space-y-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <h3 className="text-xl font-bold text-[#191919]">
+                {isAr ? 'القطع الأكثر طلباً للتفصيل والتصنيع' : 'Trending Bespoke Furniture Designs'}
+              </h3>
+              <p className="text-xs text-[#707070] mt-0.5">
+                {isAr ? 'تصاميم جاهزة للتعديل حسب مقاسات غرفتك مع تسعير بالريال' : 'Fully customizable templates ready for your room dimensions'}
+              </p>
+            </div>
+            <Link href={`/${locale}/configurator`} className="text-xs font-bold text-[#3665F3] hover:underline">
+              {isAr ? 'مشاهدة الكل في المصمم ←' : 'See all designs →'}
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {featuredFurniture.map((item) => (
+              <div
+                key={item.id}
+                className="bg-[#FFFFFF] rounded-2xl border border-[#E5E5E5] hover:border-[#CCCCCC] p-4 flex flex-col justify-between hover:shadow-md transition duration-200 group"
+              >
+                <div>
+                  {/* Image Container with Badge */}
+                  <div className="relative aspect-square w-full rounded-xl overflow-hidden bg-[#F2F2F2] mb-3">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={item.imageUrl}
+                      alt={item.titleEn}
+                      className="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                    />
+                    <span className="absolute top-2 start-2 bg-white/95 backdrop-blur-xs text-[#191919] text-[10px] font-black px-2 py-0.5 rounded shadow-xs">
+                      {item.tag}
+                    </span>
+                  </div>
+
+                  {/* Title */}
+                  <h4 className="text-xs font-semibold text-[#191919] line-clamp-2 leading-snug group-hover:text-[#3665F3] transition">
+                    {isAr ? item.titleAr : item.titleEn}
+                  </h4>
+
+                  {/* Rating */}
+                  <div className="flex items-center gap-1.5 mt-2 text-xs">
+                    <span className="text-[#F5AF02]">★</span>
+                    <span className="font-bold text-[#191919]">{item.rating}</span>
+                    <span className="text-[#707070] text-[11px]">({item.reviews})</span>
+                  </div>
+                </div>
+
+                <div className="pt-3 border-t border-[#F2F2F2] mt-3">
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-lg font-black text-[#191919]">
+                      {item.priceSar.toLocaleString()} SAR
+                    </span>
+                    <span className="text-xs text-[#707070] line-through">
+                      {item.prevPriceSar.toLocaleString()} SAR
+                    </span>
+                  </div>
+                  <div className="text-[11px] text-[#86B817] font-semibold mt-0.5">
+                    {isAr ? 'تركيب وشحن مجاني في الرياض' : 'Free Delivery & Installation in Riyadh'}
+                  </div>
+
+                  <Link
+                    href={`/${locale}/configurator`}
+                    className="mt-3 block w-full text-center bg-[#F2F2F2] hover:bg-[#3665F3] hover:text-white text-[#191919] py-2 rounded-xl text-xs font-bold transition duration-150"
+                  >
+                    {isAr ? 'تعديل المقاسات ثلاثي الأبعاد' : 'Customize in 3D'}
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* 7. eBay-Style 4 Value Proposition Badges */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 bg-[#FFFFFF] rounded-2xl border border-[#E5E5E5] p-6 shadow-xs text-xs">
+          <div className="flex items-start gap-3">
+            <span className="text-2xl">🏭</span>
+            <div>
+              <div className="font-bold text-[#191919]">{isAr ? 'تصنيع رقمي مباشر' : 'Direct Digital Factory'}</div>
+              <p className="text-[#707070] mt-0.5">{isAr ? 'قص آلي Homag CNC بدون وسيط' : 'Homag CNC milling with zero middlemen'}</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-3">
+            <span className="text-2xl">🛡️</span>
+            <div>
+              <div className="font-bold text-[#191919]">{isAr ? 'ضمان ١٠ سنوات معتمد' : '10-Year Warranty'}</div>
+              <p className="text-[#707070] mt-0.5">{isAr ? 'شهادة ضمان رقمية مسجلة' : 'Official digital warranty certificate'}</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-3">
+            <span className="text-2xl">💳</span>
+            <div>
+              <div className="font-bold text-[#191919]">{isAr ? 'دفعات مجدولة ٥٠-٤٠-١٠' : 'Milestone Payments'}</div>
+              <p className="text-[#707070] mt-0.5">{isAr ? 'مدى، أبل باي، وفواتير زكاة' : 'Mada, Apple Pay & ZATCA e-Invoicing'}</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-3">
+            <span className="text-2xl">📱</span>
+            <div>
+              <div className="font-bold text-[#191919]">{isAr ? 'واقع معزز 1:1 AR' : '1:1 True Scale AR'}</div>
+              <p className="text-[#707070] mt-0.5">{isAr ? 'معاينة في غرفتك قبل التصنيع' : 'Preview in your room before ordering'}</p>
+            </div>
+          </div>
         </div>
-        <div className="flex gap-4">
-          <Link href={`/${locale}/admin`} className="hover:text-brand-primary transition">
-            {locale === 'ar' ? 'بوابة المصنع والموظفين' : 'Factory & Staff Portal'}
-          </Link>
-          <Link href={`/${locale}/dashboard`} className="hover:text-brand-primary transition">
-            {locale === 'ar' ? 'بوابة العملاء' : 'Customer Portal'}
-          </Link>
+      </main>
+
+      {/* 8. eBay-Style Full Breadth Clean Footer */}
+      <footer className="bg-[#FFFFFF] border-t border-[#E5E5E5] mt-12 py-10 px-4 md:px-8 text-xs text-[#707070]">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+          <div>
+            <h4 className="font-bold text-[#191919] mb-3">{isAr ? 'منصة ساتكو' : 'About SATCO'}</h4>
+            <ul className="space-y-2">
+              <li><Link href={`/${locale}`} className="hover:underline">{isAr ? 'عن الشركة' : 'About Us'}</Link></li>
+              <li><Link href={`/${locale}/admin`} className="hover:underline">{isAr ? 'المصنع بالرياض' : 'Riyadh Factory'}</Link></li>
+              <li><Link href={`/${locale}/ai-studio`} className="hover:underline">{isAr ? 'استوديو الذكاء الاصطناعي' : 'AI Studio'}</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-bold text-[#191919] mb-3">{isAr ? 'خدمات العملاء' : 'Customer Service'}</h4>
+            <ul className="space-y-2">
+              <li><Link href={`/${locale}/dashboard`} className="hover:underline">{isAr ? 'متابعة مراحل الطلب' : 'Order Tracking'}</Link></li>
+              <li><Link href={`/${locale}/sample-box`} className="hover:underline">{isAr ? 'طلب صندوق العينات' : 'Order Sample Box'}</Link></li>
+              <li><Link href={`/${locale}/installer`} className="hover:underline">{isAr ? 'خدمات التركيب بالمنزل' : 'Installation Services'}</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-bold text-[#191919] mb-3">{isAr ? 'الدفع والامتثال' : 'Payment & ZATCA'}</h4>
+            <ul className="space-y-2">
+              <li><span>{isAr ? 'فواتير هيئة الزكاة والضريبة (ZATCA)' : 'ZATCA e-Invoicing Phase 2'}</span></li>
+              <li><span>{isAr ? 'مدى · فيزا · أبل باي · تابي · تمارا' : 'Mada, Apple Pay, Tabby, Tamara'}</span></li>
+              <li><span>{isAr ? 'نظام الدفعات ٥٠٪ - ٤٠٪ - ١٠٪' : '50%-40%-10% Milestones'}</span></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-bold text-[#191919] mb-3">{isAr ? 'المساعدة والضمان' : 'Help & Warranty'}</h4>
+            <ul className="space-y-2">
+              <li><span>{isAr ? 'ضمان رسمي ١٠ سنوات' : '10-Year Warranty'}</span></li>
+              <li><span>{isAr ? 'مطابقة الكود السعودي للمباني' : 'SBC Compliance'}</span></li>
+              <li><span>{isAr ? 'حماية البيانات السعودية PDPL' : 'Saudi PDPL Privacy'}</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="max-w-7xl mx-auto pt-6 border-t border-[#E5E5E5] flex flex-col md:flex-row items-center justify-between gap-4 text-[11px]">
+          <div>
+            Copyright © 2026 SATCO Smart Furniture Platform. All Rights Reserved. (Riyadh, Kingdom of Saudi Arabia)
+          </div>
+          <div className="flex gap-4">
+            <Link href="#" className="hover:underline">{isAr ? 'الشروط والأحكام' : 'Terms & Conditions'}</Link>
+            <Link href="#" className="hover:underline">{isAr ? 'سياسة الخصوصية' : 'Privacy Notice'}</Link>
+          </div>
         </div>
       </footer>
-    </main>
+    </div>
   );
 }
