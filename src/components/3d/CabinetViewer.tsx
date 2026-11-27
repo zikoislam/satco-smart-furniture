@@ -19,6 +19,7 @@ export interface CabinetViewerProps {
   shutterColor?: string;
   roughness?: number;
   openDoors?: boolean;
+  showDoors?: boolean;
 }
 
 /**

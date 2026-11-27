@@ -19,6 +19,7 @@ export interface ParametricWardrobeProps {
   shutterColor?: string;
   roughness?: number;
   openDoors?: boolean;
+  showDoors?: boolean; // When false, doors are removed completely to inspect inner shelves and drawers
 }
 
 const PANEL_THICKNESS_M = 0.018; // 18mm Egger MFC
@@ -42,6 +43,7 @@ export function ParametricWardrobe({
   shutterColor = '#e5ddd0',
   roughness = 0.42,
   openDoors = true,
+  showDoors = true,
 }: ParametricWardrobeProps) {
   const w = widthMm / 1000;
   const h = heightMm / 1000;
@@ -139,37 +141,38 @@ export function ParametricWardrobe({
         </mesh>
       ))}
 
-      {/* Front Hinged Doors */}
-      {Array.from({ length: doorsCount }).map((_, idx) => {
-        const isRightSide = idx >= doorsCount / 2;
-        const xCenter = -w / 2 + 0.004 + doorWidth / 2 + idx * (doorWidth + 0.004);
-        const hingeOffset = isRightSide ? doorWidth / 2 : -doorWidth / 2;
-        const swingAngle = openDoors ? (isRightSide ? 0.55 : -0.55) : 0;
+      {/* Front Hinged Doors (Rendered only when showDoors is true) */}
+      {showDoors &&
+        Array.from({ length: doorsCount }).map((_, idx) => {
+          const isRightSide = idx >= doorsCount / 2;
+          const xCenter = -w / 2 + 0.004 + doorWidth / 2 + idx * (doorWidth + 0.004);
+          const hingeOffset = isRightSide ? doorWidth / 2 : -doorWidth / 2;
+          const swingAngle = openDoors ? (isRightSide ? 0.55 : -0.55) : 0;
 
-        return (
-          <group
-            key={`door-${idx}`}
-            position={[xCenter + hingeOffset, PLINTH_HEIGHT_M + doorHeight / 2, d / 2 + t / 2]}
-            rotation={[0, swingAngle, 0]}
-          >
-            <mesh position={[-hingeOffset, 0, 0]} castShadow receiveShadow>
-              <boxGeometry args={[doorWidth, doorHeight, t]} />
-              <MaterialTexture textureUrl={shutterTextureUrl} fallbackColor={shutterColor} roughness={roughness} />
-            </mesh>
-            {/* Brushed Aluminum Handle */}
-            <mesh
-              position={[
-                -hingeOffset + (isRightSide ? -doorWidth / 2 + 0.035 : doorWidth / 2 - 0.035),
-                0,
-                t / 2 + 0.008,
-              ]}
+          return (
+            <group
+              key={`door-${idx}`}
+              position={[xCenter + hingeOffset, PLINTH_HEIGHT_M + doorHeight / 2, d / 2 + t / 2]}
+              rotation={[0, swingAngle, 0]}
             >
-              <boxGeometry args={[0.012, 0.28, 0.014]} />
-              <meshStandardMaterial color="#a1a1aa" metalness={0.85} roughness={0.2} />
-            </mesh>
-          </group>
-        );
-      })}
+              <mesh position={[-hingeOffset, 0, 0]} castShadow receiveShadow>
+                <boxGeometry args={[doorWidth, doorHeight, t]} />
+                <MaterialTexture textureUrl={shutterTextureUrl} fallbackColor={shutterColor} roughness={roughness} />
+              </mesh>
+              {/* Brushed Aluminum Handle */}
+              <mesh
+                position={[
+                  -hingeOffset + (isRightSide ? -doorWidth / 2 + 0.035 : doorWidth / 2 - 0.035),
+                  0,
+                  t / 2 + 0.008,
+                ]}
+              >
+                <boxGeometry args={[0.012, 0.28, 0.014]} />
+                <meshStandardMaterial color="#a1a1aa" metalness={0.85} roughness={0.2} />
+              </mesh>
+            </group>
+          );
+        })}
     </group>
   );
 }

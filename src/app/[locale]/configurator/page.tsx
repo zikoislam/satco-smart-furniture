@@ -69,6 +69,7 @@ export default function ConfiguratorPage() {
   const [doorsCount, setDoorsCount] = useState(2);
   const [drawersCount, setDrawersCount] = useState(2);
   const [openDoors, setOpenDoors] = useState(true);
+  const [showDoors, setShowDoors] = useState(true); // Toggle to completely remove doors and inspect interior
 
   const [carcassSwatch, setCarcassSwatch] = useState<MaterialSwatchItem>(FALLBACK_SWATCHES[0]);
   const [shutterSwatch, setShutterSwatch] = useState<MaterialSwatchItem>(FALLBACK_SWATCHES[1]);
@@ -194,21 +195,49 @@ export default function ConfiguratorPage() {
             shutterColor={shutterSwatch.swatchHex}
             roughness={shutterSwatch.roughness}
             openDoors={openDoors}
+            showDoors={showDoors}
           />
 
-          <div className="flex items-center justify-between rounded-xl border border-stone-200 bg-white px-4 py-3 text-xs text-stone-600">
-            <span>
-              {t('shelvesAuto')}: <strong>{shelvesCount}</strong>
+          <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-stone-200 bg-white p-3.5 text-xs text-stone-700 shadow-sm">
+            <span className="font-semibold text-stone-800">
+              {t('shelvesAuto')}: <strong className="text-amber-700">{shelvesCount}</strong>
             </span>
-            <label className="flex cursor-pointer items-center gap-2 font-medium text-stone-800">
-              <input
-                type="checkbox"
-                checked={openDoors}
-                onChange={(e) => setOpenDoors(e.target.checked)}
-                className="rounded border-stone-300"
-              />
-              {locale === 'ar' ? 'فتح الأبواب لمعاينة الأرفف' : 'Open Doors Preview'}
-            </label>
+
+            {/* 3D Door Inspection Controls (Door On / Off / Open) */}
+            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-1 bg-stone-100 p-1 rounded-xl border border-stone-200">
+                <button
+                  type="button"
+                  onClick={() => setShowDoors(true)}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition ${
+                    showDoors ? 'bg-stone-900 text-white shadow-xs' : 'text-stone-600 hover:text-stone-900'
+                  }`}
+                >
+                  {locale === 'ar' ? '🚪 مع الأبواب' : 'With Doors'}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setShowDoors(false)}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition ${
+                    !showDoors ? 'bg-amber-600 text-white shadow-xs' : 'text-stone-600 hover:text-stone-900'
+                  }`}
+                >
+                  {locale === 'ar' ? '🔍 بدون أبواب (معاينة الداخل)' : 'Without Doors (Inside View)'}
+                </button>
+              </div>
+
+              {showDoors && (
+                <label className="flex cursor-pointer items-center gap-2 font-semibold text-stone-800 bg-stone-50 px-3 py-1.5 rounded-xl border border-stone-200">
+                  <input
+                    type="checkbox"
+                    checked={openDoors}
+                    onChange={(e) => setOpenDoors(e.target.checked)}
+                    className="rounded border-stone-300 accent-amber-600"
+                  />
+                  {locale === 'ar' ? 'مفتوحة' : 'Open'}
+                </label>
+              )}
+            </div>
           </div>
         </div>
 
