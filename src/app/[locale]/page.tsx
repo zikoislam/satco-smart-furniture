@@ -199,19 +199,20 @@ export default function HomePage() {
       </nav>
 
       <main className="max-w-7xl mx-auto px-4 md:px-8 py-6 space-y-8">
-        {/* 4. eBay-Style Clean Hero Banner with 2-Card Layout */}
+        {/* 4. eBay-Style Clean Hero Banner with High-Def Image & 2-Card Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          {/* Main Hero Promotion Card */}
-          <div className="lg:col-span-8 bg-[#FFFFFF] rounded-2xl border border-[#E5E5E5] p-6 md:p-10 flex flex-col justify-between shadow-xs relative overflow-hidden">
-            <div className="max-w-xl z-10 space-y-3">
+          {/* Main Hero Promotion Card with Banner Image */}
+          <div className="lg:col-span-8 bg-[#FFFFFF] rounded-2xl border border-[#E5E5E5] overflow-hidden shadow-xs relative flex flex-col md:flex-row items-center justify-between min-h-[380px]">
+            {/* Left Content Column */}
+            <div className="p-6 md:p-10 z-10 max-w-md space-y-3">
               <div className="inline-flex items-center gap-1.5 bg-[#FFF2DE] text-[#C05621] px-3 py-1 rounded-full text-xs font-bold">
                 <span>⚡</span>
                 <span>{isAr ? 'عروض التصنيع الرقمي المباشر بالرياض' : 'Direct Digital CNC Fabrication in KSA'}</span>
               </div>
-              <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-[#191919] leading-tight">
+              <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#191919] leading-tight">
                 {isAr ? 'صمّم أثاثك بالمليمتر مع تسعير فوري' : 'Custom Precision Furniture Built to the Millimeter'}
               </h2>
-              <p className="text-sm text-[#707070] leading-relaxed">
+              <p className="text-xs md:text-sm text-[#707070] leading-relaxed">
                 {isAr
                   ? 'خزائن ومطابخ مصنعة بماكينات Homag الألمانية وخامات Egger النمساوية مع إمكانية المعاينة بالواقع المعزز 1:1 والدفع على ٣ مراحل.'
                   : 'Wardrobes & kitchens engineered with German CNC precision and Austrian Egger wood. Preview in 1:1 AR and pay in 3 milestone stages.'}
@@ -219,22 +220,30 @@ export default function HomePage() {
               <div className="flex flex-wrap items-center gap-3 pt-3">
                 <Link
                   href={`/${locale}/configurator`}
-                  className="bg-[#3665F3] hover:bg-[#2B54CF] text-white px-6 py-3 rounded-full text-sm font-bold shadow-sm transition"
+                  className="bg-[#3665F3] hover:bg-[#2B54CF] text-white px-6 py-2.5 rounded-full text-xs md:text-sm font-bold shadow-sm transition"
                 >
                   {isAr ? 'ابدأ التصميم ثلاثي الأبعاد 3D →' : 'Launch 3D Configurator →'}
                 </Link>
                 <Link
                   href={`/${locale}/ai-studio`}
-                  className="bg-[#F2F2F2] hover:bg-[#E5E5E5] text-[#191919] border border-[#CCCCCC] px-6 py-3 rounded-full text-sm font-bold transition flex items-center gap-1.5"
+                  className="bg-[#F2F2F2] hover:bg-[#E5E5E5] text-[#191919] border border-[#CCCCCC] px-5 py-2.5 rounded-full text-xs md:text-sm font-bold transition flex items-center gap-1.5"
                 >
                   <span>✨</span>
-                  <span>{isAr ? 'استوديو الذكاء الاصطناعي' : 'AI Room Designer'}</span>
+                  <span>{isAr ? 'استوديو AI' : 'AI Room Designer'}</span>
                 </Link>
               </div>
             </div>
 
-            {/* Subtle decorative background graphic */}
-            <div className="absolute -bottom-10 -right-10 w-72 h-72 bg-gradient-to-br from-blue-50 to-orange-50 rounded-full blur-2xl opacity-70 pointer-events-none" />
+            {/* Right Banner Image with Smooth Fade Blend */}
+            <div className="relative w-full md:w-1/2 h-64 md:h-full min-h-[340px] overflow-hidden">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1000&auto=format&fit=crop&q=85"
+                alt="Luxury Modern Custom Furniture Interior"
+                className="w-full h-full object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#FFFFFF] via-transparent to-transparent md:w-28" />
+            </div>
           </div>
 
           {/* Right Highlight Side-Banner: Sample Box Kit */}
