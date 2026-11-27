@@ -1,0 +1,54 @@
+{
+  "Brand": {
+    "name": "SATCO Smart Furniture",
+    "tagline": "Precision-Engineered Custom Furniture & Digital Manufacturing in KSA"
+  },
+  "Nav": {
+    "home": "Home",
+    "configurator": "3D Configurator",
+    "sampleBox": "Sample Box",
+    "orders": "My Orders"
+  },
+  "Hero": {
+    "title": "Design Your Custom Wardrobe & Kitchen to the Millimeter",
+    "subtitle": "Instant SAR pricing with 15% ZATCA VAT, automated CNC nesting, and in-house installation across Riyadh & KSA.",
+    "ctaPrimary": "Start Designing",
+    "ctaSecondary": "Browse Catalog"
+  },
+  "Common": {
+    "currency": "SAR",
+    "vatIncluded": "Includes 15% ZATCA VAT"
+  },
+  "Configurator": {
+    "title": "Parametric 3D Wardrobe Configurator",
+    "dimensions": "Dimensions (Millimeters)",
+    "width": "Width (mm)",
+    "height": "Height (mm)",
+    "depth": "Depth (mm)",
+    "doors": "Doors",
+    "drawers": "Drawers",
+    "shelvesAuto": "Auto Shelves",
+    "carcassMaterial": "Carcass Finish (Egger)",
+    "shutterMaterial": "Front Shutter Finish",
+    "edgeBanding": "Edge-Banding (Rehau)",
+    "priceBreakdown": "Live SAR Price Breakdown",
+    "rawMaterial": "Raw Material",
+    "edgeBandingCost": "Edge-Banding",
+    "hardwareCost": "Blum Hardware",
+    "laborAndMargin": "CNC Labor & Margin",
+    "netSubtotal": "Net Subtotal",
+    "vat15": "ZATCA VAT (15%)",
+    "grandTotal": "Grand Total",
+    "milestones": "3-Stage Payment Milestones",
+    "addToCart": "Add Configured Unit to Cart"
+  },
+  "Dashboard": {
+    "title": "Customer Order Dashboard",
+    "subtitle": "Track live manufacturing status, milestone payments, ZATCA invoices, and warranty coverage.",
+    "noOrders": "No orders found. Start designing your custom furniture in the 3D Configurator.",
+    "warrantyCard": "SATCO Official Warranty",
+    "invoices": "ZATCA e-Invoices",
+    "downloadPdf": "Download Invoice PDF",
+    "timeline": "Live Order Lifecycle"
+  }
+}
