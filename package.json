@@ -5,7 +5,7 @@
   "description": "SATCO AI Smart Furniture Platform (Riyadh, KSA) - Parametric 3D Customization, Automated BOM/Nesting, Homag CNC Bridge & ZATCA e-Invoicing",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "start": "next start",
     "lint": "next lint",
     "db:generate": "prisma generate",
