@@ -208,34 +208,64 @@ export default function HomePage() {
         </div>
       </header>
 
-      {/* 3. Category Strip (Like eBay Category Navigation) */}
-      <nav className="bg-[#FFFFFF] border-b border-[#E5E5E5] px-4 md:px-8 py-2 overflow-x-auto">
-        <div className="max-w-7xl mx-auto flex items-center gap-6 text-xs font-semibold whitespace-nowrap text-[#555555]">
-          <Link href={`/${locale}`} className="text-[#3665F3] font-bold border-b-2 border-[#3665F3] pb-1">
-            {isAr ? 'الرئيسية' : 'Home'}
+      {/* 3. Category Strip - High-Tech Highlighted & Sticky On Scroll */}
+      <nav className="bg-white/95 backdrop-blur-md border-b-2 border-[#3665F3]/30 px-4 md:px-8 py-2.5 overflow-x-auto sticky top-0 z-40 shadow-md">
+        <div className="max-w-7xl mx-auto flex items-center gap-3 sm:gap-5 text-xs font-bold whitespace-nowrap text-[#333333]">
+          <Link
+            href={`/${locale}`}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#3665F3] text-white shadow-sm hover:bg-[#2B54CF] transition-all transform hover:scale-105"
+          >
+            <span>🏠</span>
+            <span>{isAr ? 'الرئيسية' : 'Home'}</span>
           </Link>
-          <Link href={`/${locale}/ai-studio`} className="flex items-center gap-1 text-[#E53238] font-bold hover:text-[#B91C1C]">
-            <span>✨</span>
+          <Link
+            href={`/${locale}/ai-studio`}
+            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-red-500/10 to-pink-500/10 text-[#E53238] border border-red-500/30 hover:bg-[#E53238] hover:text-white transition-all transform hover:scale-105 shadow-xs"
+          >
+            <span className="animate-pulse">✨</span>
             <span>{isAr ? 'استوديو الذكاء الاصطناعي (AI Studio)' : 'AI Room Designer'}</span>
           </Link>
-          <Link href={`/${locale}/configurator`} className="hover:text-[#3665F3]">
-            {isAr ? 'المصمم ثلاثي الأبعاد 3D' : '3D Customizer'}
+          <Link
+            href={`/${locale}/configurator`}
+            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-sky-50 text-sky-700 border border-sky-300 hover:bg-sky-600 hover:text-white transition-all transform hover:scale-105 shadow-xs"
+          >
+            <span>📦</span>
+            <span>{isAr ? 'المصمم ثلاثي الأبعاد 3D' : '3D Customizer'}</span>
           </Link>
-          <Link href={`/${locale}/sample-box`} className="hover:text-[#3665F3]">
-            {isAr ? 'طلب صندوق العينات (١٥٠ ر.س)' : 'Sample Box Kit'}
+          <Link
+            href={`/${locale}/sample-box`}
+            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-amber-50 text-amber-800 border border-amber-300 hover:bg-amber-500 hover:text-white transition-all transform hover:scale-105 shadow-xs"
+          >
+            <span>🪵</span>
+            <span>{isAr ? 'طلب صندوق العينات (١٥٠ ر.س)' : 'Sample Box Kit'}</span>
           </Link>
-          <Link href={`/${locale}/configurator?cat=wardrobes`} className="hover:text-[#3665F3]">
-            {isAr ? 'خزائن ملابس' : 'Wardrobes'}
+          <Link
+            href={`/${locale}/configurator?cat=wardrobes`}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 text-slate-800 hover:bg-[#3665F3] hover:text-white transition-all transform hover:scale-105"
+          >
+            <span>🚪</span>
+            <span>{isAr ? 'خزائن ملابس' : 'Wardrobes'}</span>
           </Link>
-          <Link href={`/${locale}/configurator?cat=kitchens`} className="hover:text-[#3665F3]">
-            {isAr ? 'مطابخ حديثة' : 'Kitchens'}
+          <Link
+            href={`/${locale}/configurator?cat=kitchens`}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 text-slate-800 hover:bg-[#3665F3] hover:text-white transition-all transform hover:scale-105"
+          >
+            <span>🍳</span>
+            <span>{isAr ? 'مطابخ حديثة' : 'Kitchens'}</span>
           </Link>
-          <Link href={`/${locale}/dispatch`} className="flex items-center gap-1 text-emerald-600 font-bold hover:text-emerald-700">
-            <span>🚚</span>
-            <span>{isAr ? 'مركز الشحن والترحيل الذكي (AI Dispatch)' : 'AI Dispatch Center'}</span>
+          <Link
+            href={`/${locale}/dispatch`}
+            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-400/50 hover:bg-emerald-600 hover:text-white transition-all transform hover:scale-105 shadow-xs"
+          >
+            <span className="animate-bounce">🚚</span>
+            <span>{isAr ? 'مركز الشحن والترحيل الذكي' : 'AI Dispatch Center'}</span>
           </Link>
-          <Link href={`/${locale}/admin`} className="hover:text-[#3665F3] ms-auto text-gray-400">
-            {isAr ? 'لوحة تحكم التصنيع' : 'ERP Factory'}
+          <Link
+            href={`/${locale}/admin`}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-800 hover:text-white transition-all ms-auto"
+          >
+            <span>⚙️</span>
+            <span>{isAr ? 'لوحة تحكم التصنيع' : 'ERP Factory'}</span>
           </Link>
         </div>
       </nav>
