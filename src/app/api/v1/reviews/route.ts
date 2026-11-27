@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { withErrorHandler } from '@/lib/api/middleware';
 import { withAuth } from '@/lib/api/auth-guard';
 import { successResponse } from '@/lib/api/response';

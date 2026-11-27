@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { NextResponse } from 'next/server';
 import { withErrorHandler } from '@/lib/api/middleware';
 import { MerchantFeedService } from '@/modules/feeds/merchant-feed.service';

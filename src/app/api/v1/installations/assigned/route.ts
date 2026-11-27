@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { withAuth } from '@/lib/api/auth-guard';
 import { successResponse } from '@/lib/api/response';
 import { InstallationService } from '@/modules/installation/installation.service';

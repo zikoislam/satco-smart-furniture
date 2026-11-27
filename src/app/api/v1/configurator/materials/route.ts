@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { withErrorHandler } from '@/lib/api/middleware';
 import { successResponse } from '@/lib/api/response';
 import { MaterialsService } from '@/modules/catalog/materials.service';

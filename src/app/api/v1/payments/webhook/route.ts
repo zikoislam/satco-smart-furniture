@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { NextRequest, NextResponse } from 'next/server';
 import { withErrorHandler } from '@/lib/api/middleware';
 import { PaymentService } from '@/modules/payments/payment.service';

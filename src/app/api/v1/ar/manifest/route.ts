@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { NextRequest } from 'next/server';
 import { withErrorHandler } from '@/lib/api/middleware';
 import { successResponse } from '@/lib/api/response';

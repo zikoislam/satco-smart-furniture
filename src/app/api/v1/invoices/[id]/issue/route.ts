@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { withAuth } from '@/lib/api/auth-guard';
 import type { RouteContext } from '@/lib/api/middleware';
 import { successResponse } from '@/lib/api/response';

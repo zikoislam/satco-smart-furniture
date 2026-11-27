@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { withAuth } from '@/lib/api/auth-guard';
 import { withIdempotency } from '@/lib/api/idempotency';
 import { successResponse } from '@/lib/api/response';
