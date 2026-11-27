@@ -60,22 +60,28 @@ export default function AiSoftwareNavbar() {
               <Cpu className="w-3 h-3" />
               <span>{isAr ? 'محرك التقطيع الآلي: فعال' : 'Homag Nesting Engine: Active'}</span>
             </span>
-            <div className="flex items-center gap-1 border-s border-slate-800 ps-3">
-              <Link
-                href="/ar"
-                className={`px-1.5 py-0.5 rounded text-[10px] font-bold ${
-                  isAr ? 'bg-sky-600 text-white' : 'hover:text-white'
-                }`}
-              >
-                العربية
-              </Link>
+            <div className="flex items-center gap-1.5 border-s border-slate-700/80 ps-3">
               <Link
                 href="/en"
-                className={`px-1.5 py-0.5 rounded text-[10px] font-bold ${
-                  !isAr ? 'bg-sky-600 text-white' : 'hover:text-white'
+                className={`flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-black tracking-wider transition shadow-sm ${
+                  !isAr
+                    ? 'bg-sky-500 text-white shadow-sky-500/25 ring-1 ring-sky-400'
+                    : 'bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700'
                 }`}
               >
-                EN
+                <span>🇬🇧</span>
+                <span>ENG</span>
+              </Link>
+              <Link
+                href="/ar"
+                className={`flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-black tracking-wider transition shadow-sm ${
+                  isAr
+                    ? 'bg-sky-500 text-white shadow-sky-500/25 ring-1 ring-sky-400'
+                    : 'bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700'
+                }`}
+              >
+                <span>🇸🇦</span>
+                <span>العربية</span>
               </Link>
             </div>
           </div>

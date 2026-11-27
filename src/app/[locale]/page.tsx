@@ -130,12 +130,28 @@ export default function HomePage() {
             <Link href={`/${locale}/admin`} className="hover:underline">
               {isAr ? 'بوابة الإدارة والمصنع' : 'Factory Portal'}
             </Link>
-            <div className="flex gap-1 border-s ps-2 border-[#E5E5E5]">
-              <Link href="/ar" className={`px-1.5 py-0.5 rounded text-[11px] font-bold ${isAr ? 'bg-[#3665F3] text-white' : 'hover:bg-gray-100'}`}>
-                العربية
+            <div className="flex items-center gap-1.5 border-s ps-3 border-[#E5E5E5]">
+              <Link
+                href="/en"
+                className={`flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-black tracking-wider transition ${
+                  !isAr
+                    ? 'bg-[#3665F3] text-white shadow-xs'
+                    : 'bg-gray-100 text-[#707070] hover:bg-gray-200 hover:text-[#191919]'
+                }`}
+              >
+                <span>🇬🇧</span>
+                <span>ENG</span>
               </Link>
-              <Link href="/en" className={`px-1.5 py-0.5 rounded text-[11px] font-bold ${!isAr ? 'bg-[#3665F3] text-white' : 'hover:bg-gray-100'}`}>
-                EN
+              <Link
+                href="/ar"
+                className={`flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-black tracking-wider transition ${
+                  isAr
+                    ? 'bg-[#3665F3] text-white shadow-xs'
+                    : 'bg-gray-100 text-[#707070] hover:bg-gray-200 hover:text-[#191919]'
+                }`}
+              >
+                <span>🇸🇦</span>
+                <span>العربية</span>
               </Link>
             </div>
           </div>

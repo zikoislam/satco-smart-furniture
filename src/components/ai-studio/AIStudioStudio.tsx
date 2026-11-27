@@ -84,7 +84,7 @@ export const AIStudioStudio: React.FC<AIStudioStudioProps> = ({ onConceptConfirm
         <div>
           <div className="flex items-center gap-2">
             <span className="px-2.5 py-1 text-xs font-bold tracking-wider bg-blue-600/30 text-blue-400 border border-blue-500/40 rounded-full">
-              ATCO AI VISION STUDIO
+              SATCO AI VISION STUDIO
             </span>
             <span className="text-xs text-amber-400 font-medium">KSA Vision 2030 Ready</span>
           </div>
