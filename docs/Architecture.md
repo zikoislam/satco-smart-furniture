@@ -4,7 +4,7 @@
 **Document Title:** Software Architecture Document (SAD)  
 **Target Path:** `Architecture.md`  
 **System Name:** SATCO AI Smart Furniture Platform  
-**Target Market:** Kingdom of Saudi Arabia (Riyadh, Jeddah, Dammam)  
+**Target Market:** Kingdom of Saudi Arabia (Jeddah, Jeddah, Dammam)  
 **Version:** 1.0 (Production Blueprint Baseline)  
 **Date:** November 2026  
 **Status:** Approved for Development  
@@ -482,7 +482,7 @@ In compliance with Saudi cloud regulations and the Personal Data Protection Law 
                                     │
                                     ▼
 ┌────────────────────────────────────────────────────────────────────────┐
-│     Cloud Provider: AWS me-central-1 (Riyadh) / GCP me-central2        │
+│     Cloud Provider: AWS me-central-1 (Jeddah) / GCP me-central2        │
 │                                                                        │
 │  ┌──────────────────────────────────────────────────────────────────┐  │
 │  │ Private Virtual Cloud (VPC)                                      │  │
@@ -717,7 +717,7 @@ For all B2C Simplified Tax Invoices, the QR code encodes the following strict 8 
 
 ## 13. Offline-First Field Installation PWA Architecture
 
-Because residential basements, new concrete villas, and commercial fit-out sites across Riyadh often have intermittent or non-existent 4G/5G mobile signals, the Field Installation application (`/installer`) is architected as an **Offline-First Progressive Web App (PWA)**.
+Because residential basements, new concrete villas, and commercial fit-out sites across Jeddah often have intermittent or non-existent 4G/5G mobile signals, the Field Installation application (`/installer`) is architected as an **Offline-First Progressive Web App (PWA)**.
 
 ```mermaid
 sequenceDiagram

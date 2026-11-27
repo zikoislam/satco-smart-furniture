@@ -4,7 +4,7 @@
 **Document Title:** Enterprise Database Architecture & Technical Schema Specification  
 **Target Path:** `Database.md`  
 **System Name:** SATCO AI Smart Furniture Platform  
-**Target Market:** Kingdom of Saudi Arabia (Riyadh, Jeddah, Dammam)  
+**Target Market:** Kingdom of Saudi Arabia (Jeddah, Jeddah, Dammam)  
 **Version:** 1.0 (Production Engineering Baseline)  
 **Date:** November 2026  
 **Status:** Approved for Development  
@@ -143,7 +143,7 @@ CREATE TABLE customers (
     phone_number VARCHAR(16) NOT NULL, -- +9665xxxxxxxx E.164
     email VARCHAR(128) NULL,
     national_id VARCHAR(32) NULL,      -- Encrypted at rest
-    city VARCHAR(64) NOT NULL,          -- Riyadh, Jeddah, Dammam
+    city VARCHAR(64) NOT NULL,          -- Jeddah, Jeddah, Dammam
     address_short_code VARCHAR(16) NULL, -- Saudi National Address e.g. RRRD2929
     risk_score INT DEFAULT 0,          -- 0 (Trusted) to 100 (Fraud Alert)
     is_blacklisted BOOLEAN DEFAULT FALSE,
@@ -325,7 +325,7 @@ export const DimensionInputSchema = z.object({
 export const SaudiCustomerSchema = z.object({
   name: z.string().min(3, "Name must be at least 3 characters").max(100),
   phoneNumber: z.string().regex(/^(?:\+966|00966|0)?5[0-9]{8}$/, "Invalid Saudi mobile format. Must start with 05 or +9665"),
-  city: z.enum(["Riyadh", "Jeddah", "Dammam", "Khobar", "Mecca", "Medina"]),
+  city: z.enum(["Jeddah", "Jeddah", "Dammam", "Khobar", "Mecca", "Medina"]),
   addressShortCode: z.string().regex(/^[A-Z]{4}[0-9]{4}$/, "Invalid Saudi National Address format (e.g. RRRD2929)").optional(),
 });
 
@@ -558,7 +558,7 @@ export const BOMPartModel = mongoose.model<IBOMPart>("BOMPart", BOMPartSchema);
     "name": "Eng. Faisal Al-Otaibi",
     "phone_number": "+966501234567",
     "email": "faisal.otaibi@example.sa",
-    "city": "Riyadh",
+    "city": "Jeddah",
     "address_short_code": "RRRD2929",
     "risk_score": 5,
     "is_blacklisted": false

@@ -14,7 +14,7 @@ async function main() {
       legalNameEn: 'SATCO Smart Wood Industries LLC',
       crNumber: '1010884920',
       vatRegistrationNumber: '310294857200003',
-      headquartersAddress: 'Al-Kharj Industrial City, Phase 2, Riyadh, KSA',
+      headquartersAddress: 'Al-Kharj Industrial City, Phase 2, Jeddah, KSA',
       phone: '+966114928000',
       email: 'operations@satco.sa',
     },
@@ -256,7 +256,7 @@ async function main() {
     data: {
       companyId: company.id,
       version: 1,
-      ruleName: 'SATCO Riyadh Standard 2026 Rate Card',
+      ruleName: 'SATCO Jeddah Standard 2026 Rate Card',
       cuttingPerMeterSar: 1.5000,
       edgeBandingPerMeterSar: 3.5000,
       cncPerHoleSar: 0.3500,

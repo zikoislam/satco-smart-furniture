@@ -1,7 +1,7 @@
 # SATCO Prisma & Database Agent Instructions
 
 **System:** SATCO AI Smart Furniture Platform  
-**Target:** Kingdom of Saudi Arabia (Riyadh, Dammam, Jeddah)  
+**Target:** Kingdom of Saudi Arabia (Jeddah, Dammam, Jeddah)  
 **Database:** PostgreSQL 15 · Prisma ORM 5.x · `decimal.js` Financial Math  
 **File Path:** `prisma/Agent.md`  
 **Last Updated:** November 2026  
@@ -234,7 +234,7 @@ enum NewStatus {
 - [ ] Are monetary fields using `@db.Decimal(12, 4)` (not Float, not Int)?
 - [ ] Does the `@@map()` follow `snake_case_plural`?
 - [ ] Are all FK fields indexed with `@@index([])`?
-- [ ] Is `@db.Timestamptz(6)` used for all date/time fields (Saudi timezone: `Asia/Riyadh` UTC+3)?
+- [ ] Is `@db.Timestamptz(6)` used for all date/time fields (Saudi timezone: `Asia/Jeddah` UTC+3)?
 - [ ] Are string fields capped with `@db.VarChar(N)` for known-length data?
 
 ---
@@ -640,7 +640,7 @@ const validatedAddress = SaudiNationalAddressSchema.parse({
   buildingNumber: '8228',       // Exactly 4 digits
   streetName: 'King Fahd Road',
   district: 'Al Olaya',
-  city: 'Riyadh',
+  city: 'Jeddah',
   postalCode: '12241',          // Exactly 5 digits
   additionalNumber: '2121',    // Exactly 4 digits (optional)
 });
@@ -694,7 +694,7 @@ async function createCustomer(input: unknown) {
     await tx.customerProfile.create({
       data: {
         userId: user.id,
-        city: validated.city ?? 'Riyadh',
+        city: validated.city ?? 'Jeddah',
       },
     });
 

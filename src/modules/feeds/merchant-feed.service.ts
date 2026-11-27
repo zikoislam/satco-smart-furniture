@@ -35,7 +35,7 @@ export class MerchantFeedService {
         const imageLink = `${baseUrl}/images/templates/${encodeURIComponent(tpl.slug)}.jpg`;
         const title = escapeXml(`${tpl.nameEn} | ${tpl.nameAr}`);
         const desc = escapeXml(
-          `Custom parametric ${tpl.nameEn} (${tpl.defaultWidthMm}x${tpl.defaultHeightMm}x${tpl.defaultDepthMm}mm) manufactured in Riyadh, KSA. Includes 15% ZATCA VAT.`
+          `Custom parametric ${tpl.nameEn} (${tpl.defaultWidthMm}x${tpl.defaultHeightMm}x${tpl.defaultDepthMm}mm) manufactured in Jeddah, KSA. Includes 15% ZATCA VAT.`
         );
         const categoryName = escapeXml(tpl.category?.nameEn ?? 'Custom Furniture');
 

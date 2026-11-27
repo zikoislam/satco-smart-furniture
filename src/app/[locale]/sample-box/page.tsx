@@ -23,7 +23,7 @@ export default function SampleBoxPage() {
   const [buildingNumber, setBuildingNumber] = useState('');
   const [streetName, setStreetName] = useState('');
   const [district, setDistrict] = useState('');
-  const [city, setCity] = useState('Riyadh');
+  const [city, setCity] = useState('Jeddah');
   const [postalCode, setPostalCode] = useState('');
 
   const [result, setResult] = useState<{ sampleBoxOrderId: string; creditPolicy: string } | null>(

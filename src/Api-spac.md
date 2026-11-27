@@ -4,7 +4,7 @@
 **Document Title:** Enterprise REST API Specification  
 **File Path:** `src/Api-spac.md`  
 **System Name:** SATCO AI Smart Furniture Platform  
-**Target Market:** Kingdom of Saudi Arabia (Riyadh, Dammam, Jeddah)  
+**Target Market:** Kingdom of Saudi Arabia (Jeddah, Dammam, Jeddah)  
 **API Baseline Version:** `v1` (`/api/v1`)  
 **Specification Standard:** OpenAPI 3.1 / RESTful JSON  
 **Security Standard:** Bearer JWT, HMAC-SHA256 Signatures, API Key Bridge, ZATCA Phase 2 Compliance  
@@ -400,7 +400,7 @@ All API endpoints (except binary streams) strictly return a normalized JSON enve
     "buildingNumber": "3244",
     "streetName": "King Fahd Road",
     "district": "Al Olaya",
-    "city": "Riyadh",
+    "city": "Jeddah",
     "postalCode": "12211"
   },
   "preferredFinishes": ["EGG-H1180-ST37", "EGG-W1000-PM", "EGG-U708-ST9"]
@@ -697,7 +697,7 @@ All API endpoints (except binary streams) strictly return a normalized JSON enve
         "customerPhone": "+966501234567",
         "scheduledDate": "2026-11-28",
         "timeSlot": "09:00 - 13:00",
-        "district": "Al Olaya, Riyadh",
+        "district": "Al Olaya, Jeddah",
         "buildingNumber": "3244",
         "status": "SCHEDULED"
       }
@@ -865,7 +865,7 @@ X-API-Warn: "API v1 is deprecated and will be decommissioned on 2027-06-30. Plea
 ```
 
 ### 4.4 Hardware Daemon & Factory Bridge Version Negotiation
-Because the Homag CNC Bridge runs as an on-premise background daemon in the Riyadh factory:
+Because the Homag CNC Bridge runs as an on-premise background daemon in the Jeddah factory:
 - The daemon sends its local software version on every poll: `X-Bridge-Protocol-Version: 1.2.0`.
 - If the cloud platform introduces a breaking change to `.mpr` generation or job schema:
   - The server responds with `HTTP 426 Upgrade Required`.

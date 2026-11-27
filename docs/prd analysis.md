@@ -5,7 +5,7 @@
 **Target File:** `PRD.md` (Version 1.0)  
 **Output Document:** `prd analysis.md`  
 **Analyst Role:** Lead Enterprise System Analyst & Solution Architect  
-**Project:** SATCO AI Smart Furniture Platform (Riyadh, Kingdom of Saudi Arabia)  
+**Project:** SATCO AI Smart Furniture Platform (Jeddah, Kingdom of Saudi Arabia)  
 **Date of Audit:** November 2026  
 **Status:** Complete Technical Baseline — Ready for Implementation & Sprint Planning  
 
@@ -375,7 +375,7 @@ Under the regulations of ZATCA (Zakat, Tax and Customs Authority), commercial fu
 ### 3.2 Saudi Personal Data Protection Law (PDPL - Royal Decree M/19)
 1. **Consent & Purpose Limitation:** Customer phone and address collected only for quotation, fabrication, and delivery.
 2. **Shop-Floor PII Redaction:** Barcode labels, cutting travelers, and assembly sheets must omit customer names and telephone numbers.
-3. **Data Residency:** In-cloud PostgreSQL and file storage must reside within Saudi Arabian data centers (e.g., AWS me-central-1 in Riyadh or Google Cloud me-central2 in Dammam).
+3. **Data Residency:** In-cloud PostgreSQL and file storage must reside within Saudi Arabian data centers (e.g., AWS me-central-1 in Jeddah or Google Cloud me-central2 in Dammam).
 
 ---
 
@@ -682,7 +682,7 @@ Standard client-side analytics fail on modern 3D configurators due to mobile bro
 ### 8.12 Formal Project Assumptions & Environmental Validation Checklist
 
 The following foundational assumptions are formally verified for development readiness:
-1. **Dedicated In-House Crew:** Delivery and installation within the Riyadh metro area are executed exclusively by SATCO-employed technicians, ensuring complete accountability and device standardisation.
+1. **Dedicated In-House Crew:** Delivery and installation within the Jeddah metro area are executed exclusively by SATCO-employed technicians, ensuring complete accountability and device standardisation.
 2. **Tactile Sample Funnel:** Physical swatch boxes are available for free factory/showroom pickup or courier delivery with a refundable deposit against orders $> 5,000\text{ SAR}$ (`BR-SMP-001`).
 3. **Hardware Air-Gap Baseline:** CNC controllers operate in an isolated workshop LAN/WLAN without direct public IP exposure (`BR-CNC-004`).
 4. **ZATCA Phase 2 & Local Legal Norms:** All financial transactions execute in SAR under ZATCA Phase 2 e-invoicing standards with 15% VAT, and customer PII is masked on physical floor travelers under Saudi PDPL law.

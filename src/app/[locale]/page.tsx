@@ -240,7 +240,7 @@ export default function HomePage() {
             <div className="p-6 md:p-10 z-10 max-w-md space-y-3">
               <div className="inline-flex items-center gap-1.5 bg-[#FFF2DE] text-[#C05621] px-3 py-1 rounded-full text-xs font-bold">
                 <span>⚡</span>
-                <span>{isAr ? 'عروض التصنيع الرقمي المباشر بالرياض' : 'Direct Digital CNC Fabrication in KSA'}</span>
+                <span>{isAr ? 'عروض التصنيع الرقمي المباشر بجدة' : 'Direct Digital CNC Fabrication in KSA'}</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#191919] leading-tight">
                 {isAr ? 'صمّم أثاثك بالمليمتر مع تسعير فوري' : 'Custom Precision Furniture Built to the Millimeter'}
@@ -423,7 +423,7 @@ export default function HomePage() {
                     </span>
                   </div>
                   <div className="text-[11px] text-[#86B817] font-semibold mt-0.5">
-                    {isAr ? 'تركيب وشحن مجاني في الرياض' : 'Free Delivery & Installation in Riyadh'}
+                    {isAr ? 'تركيب وشحن مجاني في جدة' : 'Free Delivery & Installation in Jeddah'}
                   </div>
 
                   <Link
@@ -478,7 +478,7 @@ export default function HomePage() {
             <h4 className="font-bold text-[#191919] mb-3">{isAr ? 'منصة ساتكو' : 'About SATCO'}</h4>
             <ul className="space-y-2">
               <li><Link href={`/${locale}`} className="hover:underline">{isAr ? 'عن الشركة' : 'About Us'}</Link></li>
-              <li><Link href={`/${locale}/admin`} className="hover:underline">{isAr ? 'المصنع بالرياض' : 'Riyadh Factory'}</Link></li>
+              <li><Link href={`/${locale}/admin`} className="hover:underline">{isAr ? 'المصنع بجدة' : 'Jeddah Factory'}</Link></li>
               <li><Link href={`/${locale}/ai-studio`} className="hover:underline">{isAr ? 'استوديو الذكاء الاصطناعي' : 'AI Studio'}</Link></li>
             </ul>
           </div>
@@ -510,7 +510,7 @@ export default function HomePage() {
 
         <div className="max-w-7xl mx-auto pt-6 border-t border-[#E5E5E5] flex flex-col md:flex-row items-center justify-between gap-4 text-[11px]">
           <div>
-            Copyright © 2026 SATCO Smart Furniture Platform. All Rights Reserved. (Riyadh, Kingdom of Saudi Arabia)
+            Copyright © 2026 SATCO Smart Furniture Platform. All Rights Reserved. (Jeddah, Kingdom of Saudi Arabia)
           </div>
           <div className="flex gap-4">
             <Link href="#" className="hover:underline">{isAr ? 'الشروط والأحكام' : 'Terms & Conditions'}</Link>

@@ -73,7 +73,7 @@ Custom-manufactured furniture differs fundamentally from standard retail e-comme
   - **Discount Archetypes:**
     1. *Percentage Discount:* e.g., $10\%$ off total cabinet carcass (capped at maximum SAR amount).
     2. *Fixed Amount (SAR):* e.g., $500\text{ SAR}$ off orders exceeding $5,000\text{ SAR}$.
-    3. *Free Upgrade / Service:* Free soft-close hinges or complimentary white-glove assembly in Riyadh.
+    3. *Free Upgrade / Service:* Free soft-close hinges or complimentary white-glove assembly in Jeddah.
   - **Safeguards & Anti-Abuse Rules:**
     - Per-customer usage caps linked to verified Saudi Mobile Number.
     - Minimum order threshold enforcement.
@@ -89,7 +89,7 @@ Custom-manufactured furniture differs fundamentally from standard retail e-comme
 - **Multi-Layer Defensive Shield:**
   1. *Layer 1 — Bot & Disposable Number Defense:* Rate limit quote submissions; block virtual VoIP numbers and disposable burner SIM cards.
   2. *Layer 2 — Mandatory Saudi Mobile OTP:* 4-digit verification sent through a certified Saudi telecom gateway (Unifonic / Taqnyat).
-  3. *Layer 3 — Geolocation & IP Reputation Score:* Flag submissions from proxies, VPNs, or foreign IPs pretending to order Riyadh local delivery.
+  3. *Layer 3 — Geolocation & IP Reputation Score:* Flag submissions from proxies, VPNs, or foreign IPs pretending to order Jeddah local delivery.
   4. *Layer 4 — Mandatory Pre-Production Deposit Gate (`BR-SEC-005`):* **Zero saw blade cuts without verified bank deposit.** No job can advance to `READY_FOR_PRODUCTION` without verified payment confirmation in the accounting ledger.
 
 ### 2.2 Fraud Customer Risk Profiling & Blacklist Management
@@ -131,7 +131,7 @@ Custom-manufactured furniture differs fundamentally from standard retail e-comme
 - **The Core Business Problem:** In luxury custom cabinetry ($15,000 - $60,000+\text{ SAR}$), customers hesitate to pay a 50% commitment deposit without feeling the tactile quality of the board substrate, lacquer finish, and edge-banding.
 - **Strategic Implementation:**
   - Online swatch request flow offering:
-    - *Option A:* Free self-pickup at SATCO factory (Riyadh Industrial City) or main showroom.
+    - *Option A:* Free self-pickup at SATCO factory (Jeddah Industrial City) or main showroom.
     - *Option B:* Home courier delivery with a nominal conditional deposit ($100\text{ SAR}$).
   - Deposit is 100% credited against any subsequent furniture order exceeding $5,000\text{ SAR}$, transforming sample requests into a high-converting sales qualification funnel (`BR-SMP-001`).
 
@@ -162,7 +162,7 @@ Custom-manufactured furniture differs fundamentally from standard retail e-comme
   1. *Commercial Funnel:* Web Traffic $\to$ Configurator Opens $\to$ Quote Enquiries $\to$ Issued Quotes $\to$ Closed Orders.
   2. *Financial & Due Health:* Total Booked Revenue, Cash Collected, Accounts Receivable Outstanding (Aging buckets), Net Margin per Job.
   3. *Factory Operational Yield:* Total Raw Sheets Consumed vs. Offcut Scrap Percentage, Edge-Banding Linear Meters Used, CNC Spindle Run-Time, Station Bottlenecks (Cutting vs Edge vs Assembly).
-  4. *Customer & Lead Intelligence:* CAC (Customer Acquisition Cost), Regional Distribution (Riyadh, Jeddah, Dammam), Abandoned Design Recovery Rate.
+  4. *Customer & Lead Intelligence:* CAC (Customer Acquisition Cost), Regional Distribution (Jeddah, Jeddah, Dammam), Abandoned Design Recovery Rate.
 
 ### 4.4 In-House Field Installation App & Digital Customer Handover
 - **Objective:** Eliminate site disputes, verify room readiness, track in-house technicians, and collect legal digital customer handover e-signatures on mobile tablets to unlock Milestone 3 final billing.

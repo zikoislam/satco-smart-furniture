@@ -3,7 +3,7 @@
 
 **Target Location:** `src/database-schema.md`  
 **Document Role:** Implemented Schema Snapshot (Executable Source of Truth: `prisma/schema.prisma`; Target Blueprint: `Database.md`; Reconciliation: `docs/ADR-001-SCHEMA-RECONCILIATION.md`)  
-**System Name:** SATCO AI Smart Furniture Platform (Riyadh, KSA)  
+**System Name:** SATCO AI Smart Furniture Platform (Jeddah, KSA)  
 **Version:** 2.1 (Reconciled 40-Model / 22-Enum Baseline)  
 **Status:** Active & Verified with Prisma 5.22.0 (PostgreSQL 15+)
 
@@ -295,7 +295,7 @@ model CustomerProfile {
   id                    String   @id @default(uuid()) @db.Uuid
   userId                String   @unique @map("user_id") @db.Uuid
   nationalIdOrIqamaMasked String? @map("national_id_or_iqama_masked") @db.VarChar(20)
-  city                  String   @default("Riyadh") @db.VarChar(100)
+  city                  String   @default("Jeddah") @db.VarChar(100)
   riskScore             Int      @default(0) @map("risk_score")
   totalOrdersCount      Int      @default(0) @map("total_orders_count")
   totalSpentSar         Decimal  @default(0.0000) @map("total_spent_sar") @db.Decimal(12, 4)
@@ -330,7 +330,7 @@ model Address {
   buildingNumber  String   @map("building_number") @db.VarChar(20)
   streetName      String   @map("street_name") @db.VarChar(255)
   district        String   @db.VarChar(100)
-  city            String   @default("Riyadh") @db.VarChar(100)
+  city            String   @default("Jeddah") @db.VarChar(100)
   postalCode      String   @map("postal_code") @db.VarChar(20)
   additionalNumber String? @map("additional_number") @db.VarChar(20)
   latitude        Decimal? @db.Decimal(10, 8)
@@ -849,7 +849,7 @@ export const DimensionInputSchema = z.object({
 export const SaudiCustomerSchema = z.object({
   name: z.string().min(3, "Name must be at least 3 characters").max(100),
   phoneNumber: z.string().regex(/^(?:\+966|00966|0)?5[0-9]{8}$/, "Invalid Saudi mobile format. Must start with 05 or +9665"),
-  city: z.enum(["Riyadh", "Jeddah", "Dammam", "Khobar", "Mecca", "Medina"]),
+  city: z.enum(["Jeddah", "Jeddah", "Dammam", "Khobar", "Mecca", "Medina"]),
   addressShortCode: z.string().regex(/^[A-Z]{4}[0-9]{4}$/, "Invalid Saudi National Address format (e.g. RRRD2929)").optional(),
 });
 

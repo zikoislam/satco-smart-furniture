@@ -61,7 +61,7 @@ describe('Extended Enterprise Backend Modules', () => {
 
   it('Addresses: lists, creates Saudi National Address, and deletes owned address', async () => {
     const token = signAccessToken({ sub: CUSTOMER_ID, role: 'CUSTOMER' }).accessToken;
-    mockTx.address.create.mockResolvedValue({ id: ADDRESS_ID, city: 'Riyadh' });
+    mockTx.address.create.mockResolvedValue({ id: ADDRESS_ID, city: 'Jeddah' });
 
     const postRes = await createAddressHandler(
       new NextRequest('http://localhost:3000/api/v1/addresses', {
@@ -72,7 +72,7 @@ describe('Extended Enterprise Backend Modules', () => {
           buildingNumber: '3244',
           streetName: 'King Fahd Road',
           district: 'Al Olaya',
-          city: 'Riyadh',
+          city: 'Jeddah',
           postalCode: '12211',
           isDefault: true,
         }),
@@ -81,7 +81,7 @@ describe('Extended Enterprise Backend Modules', () => {
     );
     expect(postRes.status).toBe(201);
 
-    (prisma.address.findMany as jest.Mock).mockResolvedValue([{ id: ADDRESS_ID, city: 'Riyadh' }]);
+    (prisma.address.findMany as jest.Mock).mockResolvedValue([{ id: ADDRESS_ID, city: 'Jeddah' }]);
     const listRes = await listAddressesHandler(
       new NextRequest('http://localhost:3000/api/v1/addresses', {
         headers: { authorization: `Bearer ${token}` },

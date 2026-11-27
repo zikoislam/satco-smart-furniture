@@ -17,7 +17,7 @@ To eliminate schema drift while preserving existing code (`src/modules/pricing/p
 1. **Prisma Models & Fields:** `PascalCase` models, `camelCase` fields mapped via `@map("snake_case")` to `snake_case_plural` PostgreSQL tables.
 2. **Financial Fields:** Always suffixed `*Sar` with `@db.Decimal(12, 4)` (or `(8, 4)` for unit/fee rates). Zero floating-point math.
 3. **Dimension Fields:** Always suffixed `*Mm` as `Int` (or `Decimal` for cut/thickness precision).
-4. **Timestamps:** Always `@db.Timestamptz(6)` (UTC storage, `Asia/Riyadh` presentation).
+4. **Timestamps:** Always `@db.Timestamptz(6)` (UTC storage, `Asia/Jeddah` presentation).
 5. **Primary Keys:** UUID (`@id @default(uuid()) @db.Uuid`).
 
 ---

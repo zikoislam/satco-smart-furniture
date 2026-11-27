@@ -229,7 +229,7 @@ Release 4: Machine Bridge and Multi-Tenant SaaS
 - **Security Constraint:** Air-gapped / local firewall protection for all CNC machine controllers. Machine controllers shall never be assigned public IP addresses or exposed to the public Internet.
 
 ### 6.6 Formal Project Assumptions & Operating Environment Registry
-1. **In-House Logistics & Assembly Fleet:** SATCO operates its own dedicated in-house delivery vehicles and assembly technicians in the Riyadh metropolitan area. Third-party logistics are used only for regional line-haul transit outside Riyadh.
+1. **In-House Logistics & Assembly Fleet:** SATCO operates its own dedicated in-house delivery vehicles and assembly technicians in the Jeddah metropolitan area. Third-party logistics are used only for regional line-haul transit outside Jeddah.
 2. **Material Sample Box Policy:** Prospective customers may request a physical material sample box online. The kit is available for free pickup at the SATCO factory or central showroom; home courier delivery requires a nominal deposit (e.g., $100\text{ SAR}$) that is 100% credited against any subsequent furniture order exceeding $5,000\text{ SAR}$ (`BR-SMP-001`).
 3. **Structured & Configurable Warranty Terms:** SATCO custom furniture carries a configurable warranty: standard 2-year structural warranty on core board substrates/joinery, and 1-to-2 year mechanical warranty on functional hardware (hinges, drawer slides, lift stays). Administrative settings govern exact warranty duration per product category (`BR-WAR-001`).
 4. **Air-Gapped Manufacturing Floor Baseline:** Factory CNC machines (Homag Industrial CNC) run inside an isolated local workshop subnet (LAN/WLAN). Communication from cloud platform to machine controllers relies on local Factory PC Bridge services or manual USB/SMB import, ensuring zero public internet vulnerability.
@@ -412,7 +412,7 @@ Release 4: Machine Bridge and Multi-Tenant SaaS
 - **Main Flow:**
   1. Customer clicks "Request Material Sample Box" on PDP or Configurator.
   2. Customer selects up to 5 material swatches and chooses delivery method:
-     - *Option A:* Free Self-Pickup at SATCO Factory (Industrial City, Riyadh) or Showroom.
+     - *Option A:* Free Self-Pickup at SATCO Factory (Industrial City, Jeddah) or Showroom.
      - *Option B:* Courier Delivery with conditional $100\text{ SAR}$ deposit paid via mada/Apple Pay (`BR-SMP-001`).
   3. System creates a `SampleBoxRequest` record and issues SMS pickup/tracking pass.
   4. When customer places a custom furniture order, system automatically credits the deposit toward the order total.
@@ -891,7 +891,7 @@ Release 4: Machine Bridge and Multi-Tenant SaaS
 #### `FR-LOG-001`: Delivery & Logistics Fleet Slot Scheduling
 - **Module:** Order Management
 - **Requirement Title:** Scheduled Delivery Windows, Building Access Constraints, and Logistics Dispatch
-- **Description:** Manage in-house delivery vehicle dispatching in Riyadh/KSA, allowing sales coordinators and customers to select confirmed delivery time windows (Morning 09:00–13:00 / Evening 16:00–21:00), record building access constraints (e.g., service elevator dimensions, floor number, narrow stairwells), and route dispatch manifests to in-house installation trucks.
+- **Description:** Manage in-house delivery vehicle dispatching in Jeddah/KSA, allowing sales coordinators and customers to select confirmed delivery time windows (Morning 09:00–13:00 / Evening 16:00–21:00), record building access constraints (e.g., service elevator dimensions, floor number, narrow stairwells), and route dispatch manifests to in-house installation trucks.
 - **Actor:** Logistics Coordinator, Field Installer / Technician, Customer
 - **Priority:** Must Have (Release 1)
 - **Preconditions:** Order passes factory QC and Milestone 2 pre-dispatch payment is verified.

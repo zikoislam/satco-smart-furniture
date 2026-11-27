@@ -56,7 +56,7 @@ describe('Enterprise Completeness Test Suite (Procurement, Field HR, AR)', () =>
     // 1. Check in
     const checkIn = await FieldServiceHR.recordCheckIn(techId, {
       gpsLat: 24.7136,
-      gpsLng: 46.6753, // Riyadh coordinates
+      gpsLng: 46.6753, // Jeddah coordinates
       deviceInfo: 'Samsung Galaxy XCover Pro',
     });
 

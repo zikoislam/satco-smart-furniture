@@ -144,7 +144,7 @@ describe('Phase 7: ZATCA e-Invoicing, Installation PWA, Due Manager & Fraud Shie
         order: {
           orderNumber: 'ORD-2026-00452',
           customer: { fullName: 'Faisal Al-Otaibi', phone: '+966501234567' },
-          address: { district: 'Al Olaya', city: 'Riyadh', buildingNumber: '3244' },
+          address: { district: 'Al Olaya', city: 'Jeddah', buildingNumber: '3244' },
         },
       },
     ]);

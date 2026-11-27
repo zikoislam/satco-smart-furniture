@@ -4,7 +4,7 @@
 **Document Title:** Enterprise Data Flow Specification & System Modeling  
 **Target Path:** `DFD.md`  
 **System Name:** SATCO AI Smart Furniture Platform  
-**Target Market:** Kingdom of Saudi Arabia (Riyadh, Jeddah, Dammam)  
+**Target Market:** Kingdom of Saudi Arabia (Jeddah, Jeddah, Dammam)  
 **Version:** 1.0 (Production Engineering Baseline)  
 **Date:** November 2026  
 **Status:** Approved for Development  

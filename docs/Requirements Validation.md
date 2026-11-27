@@ -387,7 +387,7 @@ The following workflows must be validated with real business users before the re
 ---
 
 ### Workflow G — In-House Field Installation & Customer Digital Handover E-Sign
-1. Delivery crew arrives at customer residence in Riyadh.
+1. Delivery crew arrives at customer residence in Jeddah.
 2. In-house technician opens field app on tablet (`/installer/jobs/{id}`).
 3. Technician executes digital Site Readiness Checklist with photos (room walls, floor level, socket clearances).
 4. Crew completes on-site assembly, door alignment, and filler trim fitting.

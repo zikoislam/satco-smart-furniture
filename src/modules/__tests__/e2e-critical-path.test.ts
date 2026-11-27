@@ -379,7 +379,7 @@ describe('Phase 8: Feeds, Reviews, Healthcheck & E2E Critical Path', () => {
       new NextRequest('http://localhost:3000/api/v1/reviews', {
         method: 'POST',
         headers: { authorization: `Bearer ${customerJwt}`, 'content-type': 'application/json' },
-        body: JSON.stringify({ orderId: ORDER_ID, rating: 5, commentEn: 'Precision fit in Riyadh!' }),
+        body: JSON.stringify({ orderId: ORDER_ID, rating: 5, commentEn: 'Precision fit in Jeddah!' }),
       }),
       { params: Promise.resolve({}) }
     );

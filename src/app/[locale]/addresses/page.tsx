@@ -29,7 +29,7 @@ export default function AddressesPage() {
   const [buildingNumber, setBuildingNumber] = useState('');
   const [streetName, setStreetName] = useState('');
   const [district, setDistrict] = useState('');
-  const [city, setCity] = useState('Riyadh');
+  const [city, setCity] = useState('Jeddah');
   const [postalCode, setPostalCode] = useState('');
   const [additionalNumber, setAdditionalNumber] = useState('');
   const [isDefault, setIsDefault] = useState(true);
@@ -187,7 +187,7 @@ export default function AddressesPage() {
             <input
               type="text"
               required
-              placeholder="City (Riyadh)"
+              placeholder="City (Jeddah)"
               value={city}
               onChange={(e) => setCity(e.target.value)}
               className="w-full rounded-lg border border-stone-300 px-3 py-2 text-sm"

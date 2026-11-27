@@ -21,7 +21,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'SATCO AI Smart Furniture Platform | ساتكو للأثاث الذكي',
   description:
-    'Parametric 3D Custom Furniture, Automated BOM/Nesting & ZATCA e-Invoicing in Riyadh, KSA',
+    'Parametric 3D Custom Furniture, Automated BOM/Nesting & ZATCA e-Invoicing in Jeddah, KSA',
 };
 
 export default async function LocaleLayout({

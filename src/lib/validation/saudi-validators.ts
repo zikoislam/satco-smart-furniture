@@ -48,7 +48,7 @@ export const SaudiNationalAddressSchema = z.object({
   buildingNumber: z.string().length(4, 'Building number must be exactly 4 digits'),
   streetName: z.string().min(3, 'Street name is required'),
   district: z.string().min(2, 'District is required'),
-  city: z.string().min(2, 'City is required').default('Riyadh'),
+  city: z.string().min(2, 'City is required').default('Jeddah'),
   postalCode: z.string().length(5, 'Postal code must be exactly 5 digits'),
   additionalNumber: z.string().length(4, 'Additional number must be exactly 4 digits').optional(),
   latitude: z.number().optional(),

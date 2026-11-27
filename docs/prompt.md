@@ -4,7 +4,7 @@
 **Document Title:** Master Build Prompt & Implementation Roadmap  
 **File Path:** `prisma/prompt.md`  
 **System:** SATCO AI Smart Furniture Platform  
-**Target Market:** Kingdom of Saudi Arabia (Riyadh, Dammam,makkah,madinah,Jeddah and all KSA cities)  
+**Target Market:** Kingdom of Saudi Arabia (Jeddah, Dammam,makkah,madinah,Jeddah and all KSA cities)  
 **Tech Stack:** Next.js 15 (App Router) · TypeScript · Tailwind CSS · Prisma 5 · PostgreSQL 15 · Redis · BullMQ · `decimal.js` · Zod · `next-intl`  
 **Source Documents:** `PRD.md`, `Architecture.md`, `Database.md`, `src/database-schema.md`, `src/Api-spac.md`, `idea.md`, `DFD.md`, `Requirements Validation.md`  
 **Date:** November 2026  

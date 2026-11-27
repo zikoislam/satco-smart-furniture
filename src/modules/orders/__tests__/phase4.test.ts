@@ -474,7 +474,7 @@ describe('Phase 4: Cart, Orders, State Machine, Payments & Sample Box', () => {
           buildingNumber: '3244',
           streetName: 'King Fahd Road',
           district: 'Al Olaya',
-          city: 'Riyadh',
+          city: 'Jeddah',
           postalCode: '12211',
         },
         preferredFinishes: ['EGG-H1180-ST37', 'EGG-W1000-PM'],

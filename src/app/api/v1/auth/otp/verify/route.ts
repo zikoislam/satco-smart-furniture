@@ -35,7 +35,7 @@ export const POST = withErrorHandler(async (req: NextRequest) => {
     if (existing) {
       if (!existing.customerProfile) {
         await tx.customerProfile.create({
-          data: { userId: existing.id, city: 'Riyadh' },
+          data: { userId: existing.id, city: 'Jeddah' },
         });
       }
       return existing;
@@ -48,7 +48,7 @@ export const POST = withErrorHandler(async (req: NextRequest) => {
         role: 'CUSTOMER',
         preferredLocale: 'ar',
         customerProfile: {
-          create: { city: 'Riyadh' },
+          create: { city: 'Jeddah' },
         },
       },
     });
