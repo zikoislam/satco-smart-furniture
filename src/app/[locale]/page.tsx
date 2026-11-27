@@ -232,20 +232,41 @@ export default function HomePage() {
       </nav>
 
       <main className="max-w-7xl mx-auto px-4 md:px-8 py-6 space-y-8">
-        {/* 4. eBay-Style Clean Hero Banner with High-Def Image & 2-Card Layout */}
+        {/* 4. eBay-Style Hero Section with Prominent 3-Second Full Image Showcase */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          {/* Main Hero Promotion Card with Banner Image */}
-          <div className="lg:col-span-8 bg-[#FFFFFF] rounded-2xl border border-[#E5E5E5] overflow-hidden shadow-xs relative flex flex-col md:flex-row items-center justify-between min-h-[380px]">
-            {/* Left Content Column */}
-            <div className="p-6 md:p-10 z-10 max-w-md space-y-3">
-              <div className="inline-flex items-center gap-1.5 bg-[#FFF2DE] text-[#C05621] px-3 py-1 rounded-full text-xs font-bold">
+          {/* Main Hero Card: Full-Bleed 3-Second Auto-Slider with Floating Glass Text Overlay */}
+          <div className="lg:col-span-8 bg-[#FFFFFF] rounded-2xl border border-[#E5E5E5] overflow-hidden shadow-xs relative min-h-[440px] md:min-h-[480px] flex items-center">
+            {/* Full-Cover Background Image Carousel (3-Second Auto-Rotation) */}
+            <div className="absolute inset-0 z-0">
+              {bannerImages.map((b, idx) => (
+                <div
+                  key={idx}
+                  className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                    activeBannerIndex === idx ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                  }`}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={b.url}
+                    alt={b.titleEn}
+                    className="w-full h-full object-cover object-center"
+                  />
+                  {/* Subtle darkening overlay so text is 100% readable while image is clearly visible */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/40 to-transparent" />
+                </div>
+              ))}
+            </div>
+
+            {/* Floating Glassmorphic Text Card on Top of the Visible Image */}
+            <div className="relative z-10 p-6 md:p-10 max-w-lg space-y-3.5 text-white">
+              <div className="inline-flex items-center gap-1.5 bg-[#F5AF02] text-[#191919] px-3.5 py-1 rounded-full text-xs font-black shadow-sm">
                 <span>⚡</span>
                 <span>{isAr ? 'عروض التصنيع الرقمي المباشر بجدة' : 'Direct Digital CNC Fabrication in KSA'}</span>
               </div>
-              <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#191919] leading-tight">
+              <h2 className="text-3xl md:text-5xl font-black tracking-tight leading-tight drop-shadow-md text-white">
                 {isAr ? 'صمّم أثاثك بالمليمتر مع تسعير فوري' : 'Custom Precision Furniture Built to the Millimeter'}
               </h2>
-              <p className="text-xs md:text-sm text-[#707070] leading-relaxed">
+              <p className="text-xs md:text-sm text-slate-100 leading-relaxed drop-shadow-sm font-medium">
                 {isAr
                   ? 'خزائن ومطابخ مصنعة بماكينات Homag الألمانية وخامات Egger النمساوية مع إمكانية المعاينة بالواقع المعزز 1:1 والدفع على ٣ مراحل.'
                   : 'Wardrobes & kitchens engineered with German CNC precision and Austrian Egger wood. Preview in 1:1 AR and pay in 3 milestone stages.'}
@@ -253,61 +274,40 @@ export default function HomePage() {
               <div className="flex flex-wrap items-center gap-3 pt-3">
                 <Link
                   href={`/${locale}/configurator`}
-                  className="bg-[#3665F3] hover:bg-[#2B54CF] text-white px-6 py-2.5 rounded-full text-xs md:text-sm font-bold shadow-sm transition"
+                  className="bg-[#3665F3] hover:bg-[#2B54CF] text-white px-6 py-3 rounded-full text-xs md:text-sm font-bold shadow-lg transition transform hover:-translate-y-0.5"
                 >
                   {isAr ? 'ابدأ التصميم ثلاثي الأبعاد 3D →' : 'Launch 3D Configurator →'}
                 </Link>
                 <Link
                   href={`/${locale}/ai-studio`}
-                  className="bg-[#F2F2F2] hover:bg-[#E5E5E5] text-[#191919] border border-[#CCCCCC] px-5 py-2.5 rounded-full text-xs md:text-sm font-bold transition flex items-center gap-1.5"
+                  className="bg-white/90 hover:bg-white text-[#191919] px-5 py-3 rounded-full text-xs md:text-sm font-bold transition flex items-center gap-1.5 shadow-md"
                 >
                   <span>✨</span>
-                  <span>{isAr ? 'استوديو AI' : 'AI Room Designer'}</span>
+                  <span>{isAr ? 'استوديو الذكاء الاصطناعي' : 'AI Room Designer'}</span>
                 </Link>
               </div>
             </div>
 
-            {/* Right Banner Image Carousel with Smooth 3-Second Crossfade & Dot Indicators */}
-            <div className="relative w-full md:w-1/2 h-72 md:h-full min-h-[360px] overflow-hidden group">
-              {bannerImages.map((b, idx) => (
-                <div
+            {/* Slider Dots Indicator */}
+            <div className="absolute bottom-5 start-8 z-20 flex items-center gap-2">
+              {bannerImages.map((_, idx) => (
+                <button
                   key={idx}
-                  className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                    activeBannerIndex === idx ? 'opacity-100 scale-100' : 'opacity-0 scale-105 pointer-events-none'
+                  type="button"
+                  onClick={() => setActiveBannerIndex(idx)}
+                  className={`h-2.5 rounded-full transition-all duration-300 ${
+                    activeBannerIndex === idx
+                      ? 'w-8 bg-[#3665F3] ring-2 ring-white/50'
+                      : 'w-2.5 bg-white/50 hover:bg-white'
                   }`}
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={b.url}
-                    alt={b.titleEn}
-                    className="w-full h-full object-cover object-center transition-transform duration-7000 ease-out"
-                  />
-                  {/* Image Caption Pill */}
-                  <div className="absolute bottom-4 end-4 bg-black/65 backdrop-blur-xs text-white text-[11px] font-bold px-3 py-1 rounded-full shadow-md">
-                    {isAr ? b.titleAr : b.titleEn}
-                  </div>
-                </div>
+                  title={`Slide ${idx + 1}`}
+                />
               ))}
+            </div>
 
-              {/* Edge Gradient Blend with Card */}
-              <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#FFFFFF] via-transparent to-transparent md:w-28 pointer-events-none" />
-
-              {/* 3-Second Dots Navigation */}
-              <div className="absolute bottom-4 start-6 z-20 flex items-center gap-1.5">
-                {bannerImages.map((_, idx) => (
-                  <button
-                    key={idx}
-                    type="button"
-                    onClick={() => setActiveBannerIndex(idx)}
-                    className={`h-2 rounded-full transition-all duration-300 ${
-                      activeBannerIndex === idx
-                        ? 'w-6 bg-[#3665F3]'
-                        : 'w-2 bg-black/30 hover:bg-black/60'
-                    }`}
-                    title={`Slide ${idx + 1}`}
-                  />
-                ))}
-              </div>
+            {/* Current Active Image Category Badge */}
+            <div className="absolute bottom-5 end-6 z-20 bg-black/60 backdrop-blur-sm text-white text-[11px] font-bold px-3 py-1 rounded-full border border-white/20">
+              {isAr ? bannerImages[activeBannerIndex]?.titleAr : bannerImages[activeBannerIndex]?.titleEn}
             </div>
           </div>
 
