@@ -133,22 +133,20 @@ export default function HomePage() {
             <div className="flex items-center gap-1.5 border-s ps-3 border-[#E5E5E5]">
               <Link
                 href="/en"
-                className={`flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-black tracking-wider transition ${
-                  !isAr
+                className={`flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-black tracking-wider transition ${!isAr
                     ? 'bg-[#3665F3] text-white shadow-xs'
                     : 'bg-gray-100 text-[#707070] hover:bg-gray-200 hover:text-[#191919]'
-                }`}
+                  }`}
               >
                 <span>🇬🇧</span>
                 <span>ENG</span>
               </Link>
               <Link
                 href="/ar"
-                className={`flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-black tracking-wider transition ${
-                  isAr
+                className={`flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-black tracking-wider transition ${isAr
                     ? 'bg-[#3665F3] text-white shadow-xs'
                     : 'bg-gray-100 text-[#707070] hover:bg-gray-200 hover:text-[#191919]'
-                }`}
+                  }`}
               >
                 <span>🇸🇦</span>
                 <span>العربية</span>
@@ -296,9 +294,8 @@ export default function HomePage() {
               {bannerImages.map((b, idx) => (
                 <div
                   key={idx}
-                  className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                    activeBannerIndex === idx ? 'opacity-100 scale-100' : 'opacity-0 scale-105 pointer-events-none'
-                  }`}
+                  className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${activeBannerIndex === idx ? 'opacity-100 scale-100' : 'opacity-0 scale-105 pointer-events-none'
+                    }`}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
@@ -355,11 +352,10 @@ export default function HomePage() {
                   key={idx}
                   type="button"
                   onClick={() => setActiveBannerIndex(idx)}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    activeBannerIndex === idx
+                  className={`h-2 rounded-full transition-all duration-300 ${activeBannerIndex === idx
                       ? 'w-6 bg-[#F5AF02] ring-2 ring-white/60'
                       : 'w-2 bg-white/50 hover:bg-white'
-                  }`}
+                    }`}
                   title={`Slide ${idx + 1}`}
                 />
               ))}
