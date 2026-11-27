@@ -4,6 +4,7 @@ export const dynamic = 'force-dynamic';
 import React, { useState } from 'react';
 import { useLocale } from 'next-intl';
 import Link from 'next/link';
+import AiSoftwareNavbar from '@/components/navigation/AiSoftwareNavbar';
 
 export default function HomePage() {
   const locale = useLocale();
@@ -109,6 +110,9 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-[#F7F7F7] text-[#191919] font-sans">
+      {/* 0. Top Enterprise AI Software Menu Bar & Live Status */}
+      <AiSoftwareNavbar />
+
       {/* 1. eBay-Style Top Notification Bar */}
       <div className="bg-[#FFFFFF] border-b border-[#E5E5E5] text-[12px] text-[#707070] py-1.5 px-4 md:px-8">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -225,6 +229,10 @@ export default function HomePage() {
           </Link>
           <Link href={`/${locale}/configurator?cat=kitchens`} className="hover:text-[#3665F3]">
             {isAr ? 'مطابخ حديثة' : 'Kitchens'}
+          </Link>
+          <Link href={`/${locale}/dispatch`} className="flex items-center gap-1 text-emerald-600 font-bold hover:text-emerald-700">
+            <span>🚚</span>
+            <span>{isAr ? 'مركز الشحن والترحيل الذكي (AI Dispatch)' : 'AI Dispatch Center'}</span>
           </Link>
           <Link href={`/${locale}/admin`} className="hover:text-[#3665F3] ms-auto text-gray-400">
             {isAr ? 'لوحة تحكم التصنيع' : 'ERP Factory'}
