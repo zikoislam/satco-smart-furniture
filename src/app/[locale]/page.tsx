@@ -232,64 +232,79 @@ export default function HomePage() {
       </nav>
 
       <main className="max-w-7xl mx-auto px-4 md:px-8 py-6 space-y-8">
-        {/* 4. eBay-Style Hero Section with Prominent 3-Second Full Image Showcase */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          {/* Main Hero Card: Full-Bleed 3-Second Auto-Slider with Floating Glass Text Overlay */}
-          <div className="lg:col-span-8 bg-[#FFFFFF] rounded-2xl border border-[#E5E5E5] overflow-hidden shadow-xs relative min-h-[440px] md:min-h-[480px] flex items-center">
+        {/* 4. eBay-Style Hero Section: 100% Full Width Picture with Shimmer/Flash Text Overlay */}
+        <div className="w-full">
+          {/* Main Full-Bleed Card Covering Entire Width */}
+          <div className="w-full bg-[#191919] rounded-2xl md:rounded-3xl border border-[#E5E5E5] overflow-hidden shadow-md relative min-h-[460px] md:min-h-[520px] flex items-center justify-center text-center">
             {/* Full-Cover Background Image Carousel (3-Second Auto-Rotation) */}
             <div className="absolute inset-0 z-0">
               {bannerImages.map((b, idx) => (
                 <div
                   key={idx}
                   className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                    activeBannerIndex === idx ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                    activeBannerIndex === idx ? 'opacity-100 scale-100' : 'opacity-0 scale-105 pointer-events-none'
                   }`}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={b.url}
                     alt={b.titleEn}
-                    className="w-full h-full object-cover object-center"
+                    className="w-full h-full object-cover object-center brightness-90"
                   />
-                  {/* Subtle darkening overlay so text is 100% readable while image is clearly visible */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/40 to-transparent" />
+                  {/* Cinematic Dark Vignette Overlay for Crisp Readability */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/35" />
                 </div>
               ))}
             </div>
 
-            {/* Floating Glassmorphic Text Card on Top of the Visible Image */}
-            <div className="relative z-10 p-6 md:p-10 max-w-lg space-y-3.5 text-white">
-              <div className="inline-flex items-center gap-1.5 bg-[#F5AF02] text-[#191919] px-3.5 py-1 rounded-full text-xs font-black shadow-sm">
-                <span>⚡</span>
-                <span>{isAr ? 'عروض التصنيع الرقمي المباشر بجدة' : 'Direct Digital CNC Fabrication in KSA'}</span>
+            {/* Centered Floating Text on Top of Full Picture with Animated Flash / Shimmer Effects */}
+            <div className="relative z-10 px-4 md:px-12 py-10 max-w-4xl mx-auto space-y-4 text-white flex flex-col items-center">
+              {/* Flashing Pulse Badge */}
+              <div className="inline-flex items-center gap-2 bg-[#E53238] text-white px-4 py-1.5 rounded-full text-xs font-black shadow-lg animate-badge-flash">
+                <span className="animate-spin text-sm">⚡</span>
+                <span className="tracking-wide">
+                  {isAr ? 'عروض التصنيع الرقمي المباشر بجدة' : 'Direct Digital CNC Fabrication in KSA (Jeddah)'}
+                </span>
               </div>
-              <h2 className="text-3xl md:text-5xl font-black tracking-tight leading-tight drop-shadow-md text-white">
+
+              {/* Glowing / Flashing Heading with Animated Shimmer Light */}
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight leading-tight drop-shadow-2xl animate-text-shimmer">
                 {isAr ? 'صمّم أثاثك بالمليمتر مع تسعير فوري' : 'Custom Precision Furniture Built to the Millimeter'}
               </h2>
-              <p className="text-xs md:text-sm text-slate-100 leading-relaxed drop-shadow-sm font-medium">
+
+              {/* Subtitle with High-Contrast Glow */}
+              <p className="text-sm sm:text-base md:text-lg text-slate-100 max-w-2xl leading-relaxed drop-shadow-md font-medium">
                 {isAr
                   ? 'خزائن ومطابخ مصنعة بماكينات Homag الألمانية وخامات Egger النمساوية مع إمكانية المعاينة بالواقع المعزز 1:1 والدفع على ٣ مراحل.'
                   : 'Wardrobes & kitchens engineered with German CNC precision and Austrian Egger wood. Preview in 1:1 AR and pay in 3 milestone stages.'}
               </p>
-              <div className="flex flex-wrap items-center gap-3 pt-3">
+
+              {/* Eye-Catching Call-to-Action Buttons with Glow */}
+              <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
                 <Link
                   href={`/${locale}/configurator`}
-                  className="bg-[#3665F3] hover:bg-[#2B54CF] text-white px-6 py-3 rounded-full text-xs md:text-sm font-bold shadow-lg transition transform hover:-translate-y-0.5"
+                  className="bg-[#3665F3] hover:bg-[#2B54CF] text-white px-8 py-3.5 rounded-full text-sm font-black shadow-xl shadow-blue-500/40 transition transform hover:scale-105 hover:-translate-y-0.5 border border-white/20"
                 >
                   {isAr ? 'ابدأ التصميم ثلاثي الأبعاد 3D →' : 'Launch 3D Configurator →'}
                 </Link>
                 <Link
                   href={`/${locale}/ai-studio`}
-                  className="bg-white/90 hover:bg-white text-[#191919] px-5 py-3 rounded-full text-xs md:text-sm font-bold transition flex items-center gap-1.5 shadow-md"
+                  className="bg-white/95 hover:bg-white text-[#191919] px-7 py-3.5 rounded-full text-sm font-black transition transform hover:scale-105 shadow-xl flex items-center gap-2 border border-white"
                 >
-                  <span>✨</span>
+                  <span className="animate-bounce">✨</span>
                   <span>{isAr ? 'استوديو الذكاء الاصطناعي' : 'AI Room Designer'}</span>
+                </Link>
+                <Link
+                  href={`/${locale}/sample-box`}
+                  className="bg-black/60 hover:bg-black/80 backdrop-blur-md text-amber-300 border border-amber-400/50 px-6 py-3.5 rounded-full text-sm font-bold transition"
+                >
+                  {isAr ? 'طلب صندوق العينات (١٥٠ ر.س)' : 'Order Sample Box (150 SAR)'}
                 </Link>
               </div>
             </div>
 
             {/* Slider Dots Indicator */}
-            <div className="absolute bottom-5 start-8 z-20 flex items-center gap-2">
+            <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 z-20 flex items-center gap-2.5 bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/10">
               {bannerImages.map((_, idx) => (
                 <button
                   key={idx}
@@ -297,7 +312,7 @@ export default function HomePage() {
                   onClick={() => setActiveBannerIndex(idx)}
                   className={`h-2.5 rounded-full transition-all duration-300 ${
                     activeBannerIndex === idx
-                      ? 'w-8 bg-[#3665F3] ring-2 ring-white/50'
+                      ? 'w-8 bg-[#F5AF02] ring-2 ring-white/60'
                       : 'w-2.5 bg-white/50 hover:bg-white'
                   }`}
                   title={`Slide ${idx + 1}`}
@@ -306,10 +321,11 @@ export default function HomePage() {
             </div>
 
             {/* Current Active Image Category Badge */}
-            <div className="absolute bottom-5 end-6 z-20 bg-black/60 backdrop-blur-sm text-white text-[11px] font-bold px-3 py-1 rounded-full border border-white/20">
+            <div className="absolute bottom-5 end-6 z-20 bg-black/70 backdrop-blur-md text-white text-[11px] font-bold px-3.5 py-1.5 rounded-full border border-white/20 hidden sm:block">
               {isAr ? bannerImages[activeBannerIndex]?.titleAr : bannerImages[activeBannerIndex]?.titleEn}
             </div>
           </div>
+        </div>
 
           {/* Right Highlight Side-Banner: Sample Box Kit */}
           <div className="lg:col-span-4 bg-[#FFFFFF] rounded-2xl border border-[#E5E5E5] p-6 flex flex-col justify-between shadow-xs">

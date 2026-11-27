@@ -55,3 +55,63 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #999;
 }
+
+/* -------------------------------------------------------------
+   Hero Flashing & Shimmer Keyframe Animations
+   ------------------------------------------------------------- */
+@keyframes heroTextFlash {
+  0%, 100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 15px rgba(245, 175, 2, 0.8));
+    text-shadow: 0 0 25px rgba(255, 255, 255, 0.9);
+  }
+  50% {
+    opacity: 0.85;
+    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.4));
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+  }
+}
+
+@keyframes badgePulseFlash {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(229, 50, 56, 0.7);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(229, 50, 56, 0);
+  }
+}
+
+@keyframes shimmerGlow {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.animate-hero-flash {
+  animation: heroTextFlash 2.5s infinite ease-in-out;
+}
+
+.animate-badge-flash {
+  animation: badgePulseFlash 2s infinite ease-in-out;
+}
+
+.animate-text-shimmer {
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    #f5af02 25%,
+    #ffffff 50%,
+    #3665f3 75%,
+    #ffffff 100%
+  );
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shimmerGlow 4s linear infinite;
+}
