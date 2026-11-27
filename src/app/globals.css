@@ -2,32 +2,79 @@
 @tailwind components;
 @tailwind utilities;
 
+/* -------------------------------------------------------------
+   THEME DEFINITIONS: High-Contrast Readability
+   ------------------------------------------------------------- */
+
+/* 1. Default: Midnight Slate + Sunset Orange */
 :root {
   --background: #0b1120;
   --foreground: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
   --surface-card: #1e293b;
   --surface-border: #334155;
   --brand-primary: #ea580c;
   --brand-hover: #c2410c;
-  --brand-light: #2a1205;
-  --brand-ring: rgba(234, 88, 12, 0.4);
+  --brand-light: #fff7ed;
   --brand-gradient: linear-gradient(135deg, #fb923c 0%, #ea580c 50%, #c2410c 100%);
 }
 
-.dark {
-  --background: #0b1120;
-  --foreground: #f8fafc;
-  --surface-card: #1e293b;
-  --surface-border: #334155;
-  --brand-light: #2a1205;
-  --brand-ring: rgba(251, 146, 60, 0.4);
+/* 2. Light Theme: Clean Crisp White + Slate + Orange */
+[data-theme='light'] {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --text-muted: #334155;
+  --text-dim: #64748b;
+  --surface-card: #ffffff;
+  --surface-border: #e2e8f0;
+  --brand-primary: #ea580c;
+  --brand-hover: #c2410c;
+  --brand-light: #fff7ed;
+  --brand-gradient: linear-gradient(135deg, #fb923c 0%, #ea580c 50%, #c2410c 100%);
+}
+
+/* 3. Luxury Gold Theme: Royal Navy + Saudi Gold */
+[data-theme='gold'] {
+  --background: #060d1a;
+  --foreground: #fefcf3;
+  --text-muted: #cbd5e1;
+  --text-dim: #94a3b8;
+  --surface-card: #0f1b2e;
+  --surface-border: #23354f;
+  --brand-primary: #d4af37;
+  --brand-hover: #b5942f;
+  --brand-light: #2c2411;
+  --brand-gradient: linear-gradient(135deg, #ffd700 0%, #d4af37 50%, #aa851d 100%);
+}
+
+/* 4. Pure Dark OLED Theme */
+[data-theme='oled'] {
+  --background: #000000;
+  --foreground: #ffffff;
+  --text-muted: #a1a1aa;
+  --text-dim: #71717a;
+  --surface-card: #121212;
+  --surface-border: #27272a;
+  --brand-primary: #3b82f6;
+  --brand-hover: #2563eb;
+  --brand-light: #172554;
+  --brand-gradient: linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #1d4ed8 100%);
+}
+
+/* Global utility bindings */
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
 }
 
 .bg-surface-card {
   background-color: var(--surface-card) !important;
 }
 
-.border-surface-card {
+.border-surface-border {
   border-color: var(--surface-border) !important;
 }
 
@@ -51,13 +98,10 @@
   background: var(--brand-gradient) !important;
 }
 
-.bg-brand-light {
-  background-color: var(--brand-light) !important;
+.text-theme-muted {
+  color: var(--text-muted) !important;
 }
 
-body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  transition: background-color 0.2s ease, color 0.2s ease;
+.text-theme-dim {
+  color: var(--text-dim) !important;
 }
