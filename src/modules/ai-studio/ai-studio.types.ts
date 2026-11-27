@@ -50,7 +50,11 @@ export type MatchedCatalogItem = z.infer<typeof MatchedCatalogItemSchema>;
 export const GenerateConceptInputSchema = z.object({
   roomType: RoomTypeEnum,
   interiorStyle: InteriorStyleEnum,
-  userPrompt: z.string().min(5).max(1000).optional(),
+  userPrompt: z
+    .string()
+    .max(1000)
+    .optional()
+    .transform((val) => (val && val.trim().length > 0 ? val.trim() : undefined)),
   budgetTier: z.enum(['ECONOMY', 'PREMIUM', 'LUXURY']).default('PREMIUM'),
   roomDimensions: z
     .object({
