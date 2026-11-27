@@ -232,10 +232,10 @@ export default function HomePage() {
       </nav>
 
       <main className="max-w-7xl mx-auto px-4 md:px-8 py-6 space-y-8">
-        {/* 4. eBay-Style Hero Section: 100% Full Width Picture with Shimmer/Flash Text Overlay */}
-        <div className="w-full">
-          {/* Main Full-Bleed Card Covering Entire Width */}
-          <div className="w-full bg-[#191919] rounded-2xl md:rounded-3xl border border-[#E5E5E5] overflow-hidden shadow-md relative min-h-[460px] md:min-h-[520px] flex items-center justify-center text-center">
+        {/* 4. eBay-Style Hero Section + Hero-Matched Sample Box Showcase */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          {/* Main Full-Bleed Hero 3-Second Slider Card */}
+          <div className="lg:col-span-8 bg-[#191919] rounded-2xl md:rounded-3xl border border-[#E5E5E5] overflow-hidden shadow-md relative min-h-[460px] md:min-h-[500px] flex items-center justify-center text-center">
             {/* Full-Cover Background Image Carousel (3-Second Auto-Rotation) */}
             <div className="absolute inset-0 z-0">
               {bannerImages.map((b, idx) => (
@@ -251,69 +251,59 @@ export default function HomePage() {
                     alt={b.titleEn}
                     className="w-full h-full object-cover object-center brightness-90"
                   />
-                  {/* Cinematic Dark Vignette Overlay for Crisp Readability */}
+                  {/* Dark Vignette Overlay for High Contrast */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/35" />
                 </div>
               ))}
             </div>
 
-            {/* Centered Floating Text on Top of Full Picture with Animated Flash / Shimmer Effects */}
-            <div className="relative z-10 px-4 md:px-12 py-10 max-w-4xl mx-auto space-y-4 text-white flex flex-col items-center">
-              {/* Flashing Pulse Badge */}
-              <div className="inline-flex items-center gap-2 bg-[#E53238] text-white px-4 py-1.5 rounded-full text-xs font-black shadow-lg animate-badge-flash">
+            {/* Centered Floating Text with Animated Shimmer Light */}
+            <div className="relative z-10 px-4 md:px-8 py-8 max-w-2xl mx-auto space-y-3.5 text-white flex flex-col items-center">
+              <div className="inline-flex items-center gap-2 bg-[#E53238] text-white px-3.5 py-1 rounded-full text-xs font-black shadow-lg animate-badge-flash">
                 <span className="animate-spin text-sm">⚡</span>
                 <span className="tracking-wide">
                   {isAr ? 'عروض التصنيع الرقمي المباشر بجدة' : 'Direct Digital CNC Fabrication in KSA (Jeddah)'}
                 </span>
               </div>
 
-              {/* Glowing / Flashing Heading with Animated Shimmer Light */}
-              <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight leading-tight drop-shadow-2xl animate-text-shimmer">
+              <h2 className="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight drop-shadow-2xl animate-text-shimmer">
                 {isAr ? 'صمّم أثاثك بالمليمتر مع تسعير فوري' : 'Custom Precision Furniture Built to the Millimeter'}
               </h2>
 
-              {/* Subtitle with High-Contrast Glow */}
-              <p className="text-sm sm:text-base md:text-lg text-slate-100 max-w-2xl leading-relaxed drop-shadow-md font-medium">
+              <p className="text-xs sm:text-sm text-slate-100 max-w-xl leading-relaxed drop-shadow-md font-medium">
                 {isAr
-                  ? 'خزائن ومطابخ مصنعة بماكينات Homag الألمانية وخامات Egger النمساوية مع إمكانية المعاينة بالواقع المعزز 1:1 والدفع على ٣ مراحل.'
+                  ? 'خزائن ومطابخ مصنعة بماكينات Homag وخامات Egger مع معاينة 1:1 AR ودفع على ٣ مراحل.'
                   : 'Wardrobes & kitchens engineered with German CNC precision and Austrian Egger wood. Preview in 1:1 AR and pay in 3 milestone stages.'}
               </p>
 
-              {/* Eye-Catching Call-to-Action Buttons with Glow */}
-              <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
+              <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
                 <Link
                   href={`/${locale}/configurator`}
-                  className="bg-[#3665F3] hover:bg-[#2B54CF] text-white px-8 py-3.5 rounded-full text-sm font-black shadow-xl shadow-blue-500/40 transition transform hover:scale-105 hover:-translate-y-0.5 border border-white/20"
+                  className="bg-[#3665F3] hover:bg-[#2B54CF] text-white px-6 py-3 rounded-full text-xs sm:text-sm font-black shadow-xl shadow-blue-500/40 transition transform hover:scale-105 border border-white/20"
                 >
                   {isAr ? 'ابدأ التصميم ثلاثي الأبعاد 3D →' : 'Launch 3D Configurator →'}
                 </Link>
                 <Link
                   href={`/${locale}/ai-studio`}
-                  className="bg-white/95 hover:bg-white text-[#191919] px-7 py-3.5 rounded-full text-sm font-black transition transform hover:scale-105 shadow-xl flex items-center gap-2 border border-white"
+                  className="bg-white/95 hover:bg-white text-[#191919] px-5 py-3 rounded-full text-xs sm:text-sm font-black transition transform hover:scale-105 shadow-xl flex items-center gap-1.5 border border-white"
                 >
                   <span className="animate-bounce">✨</span>
                   <span>{isAr ? 'استوديو الذكاء الاصطناعي' : 'AI Room Designer'}</span>
-                </Link>
-                <Link
-                  href={`/${locale}/sample-box`}
-                  className="bg-black/60 hover:bg-black/80 backdrop-blur-md text-amber-300 border border-amber-400/50 px-6 py-3.5 rounded-full text-sm font-bold transition"
-                >
-                  {isAr ? 'طلب صندوق العينات (١٥٠ ر.س)' : 'Order Sample Box (150 SAR)'}
                 </Link>
               </div>
             </div>
 
             {/* Slider Dots Indicator */}
-            <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 z-20 flex items-center gap-2.5 bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/10">
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20 flex items-center gap-2 bg-black/40 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/10">
               {bannerImages.map((_, idx) => (
                 <button
                   key={idx}
                   type="button"
                   onClick={() => setActiveBannerIndex(idx)}
-                  className={`h-2.5 rounded-full transition-all duration-300 ${
+                  className={`h-2 rounded-full transition-all duration-300 ${
                     activeBannerIndex === idx
-                      ? 'w-8 bg-[#F5AF02] ring-2 ring-white/60'
-                      : 'w-2.5 bg-white/50 hover:bg-white'
+                      ? 'w-6 bg-[#F5AF02] ring-2 ring-white/60'
+                      : 'w-2 bg-white/50 hover:bg-white'
                   }`}
                   title={`Slide ${idx + 1}`}
                 />
@@ -321,39 +311,61 @@ export default function HomePage() {
             </div>
 
             {/* Current Active Image Category Badge */}
-            <div className="absolute bottom-5 end-6 z-20 bg-black/70 backdrop-blur-md text-white text-[11px] font-bold px-3.5 py-1.5 rounded-full border border-white/20 hidden sm:block">
+            <div className="absolute bottom-4 end-5 z-20 bg-black/70 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1 rounded-full border border-white/20 hidden sm:block">
               {isAr ? bannerImages[activeBannerIndex]?.titleAr : bannerImages[activeBannerIndex]?.titleEn}
             </div>
           </div>
-        </div>
 
-          {/* Right Highlight Side-Banner: Sample Box Kit */}
-          <div className="lg:col-span-4 bg-[#FFFFFF] rounded-2xl border border-[#E5E5E5] p-6 flex flex-col justify-between shadow-xs">
-            <div>
-              <span className="text-[11px] font-black text-[#E53238] uppercase tracking-wider">
-                {isAr ? 'ضمان استرداد ١٠٠٪' : '100% REFUNDABLE'}
-              </span>
-              <h3 className="text-xl font-bold text-[#191919] mt-1">
+          {/* Right Highlight Side-Card: Material Sample Box Kit (Styling perfectly matched with Hero) */}
+          <div className="lg:col-span-4 rounded-2xl md:rounded-3xl border border-[#E5E5E5] overflow-hidden shadow-md relative min-h-[460px] md:min-h-[500px] flex flex-col justify-between p-6 sm:p-7 text-white bg-[#121212]">
+            {/* Full-Cover Background Image for Sample Box */}
+            <div className="absolute inset-0 z-0">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=800&auto=format&fit=crop&q=85"
+                alt="Material Sample Box Wood Swatches"
+                className="w-full h-full object-cover object-center brightness-75 hover:scale-105 transition duration-700"
+              />
+              {/* Dark Gradient Overlay for Maximum Text Contrast */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/45" />
+            </div>
+
+            {/* Card Content Floating Over Background */}
+            <div className="relative z-10 space-y-3">
+              <div className="inline-flex items-center gap-1.5 bg-[#E53238] text-white px-3 py-1 rounded-full text-[11px] font-black tracking-wider shadow-md animate-badge-flash">
+                <span>🛡️</span>
+                <span>{isAr ? 'ضمان استرداد ١٠٠٪' : '100% REFUNDABLE'}</span>
+              </div>
+
+              <h3 className="text-2xl font-black text-white drop-shadow-md animate-text-shimmer">
                 {isAr ? 'صندوق عينات الخشب والمفصلات' : 'Material Sample Box Kit'}
               </h3>
-              <p className="text-xs text-[#707070] mt-2 leading-relaxed">
+
+              <p className="text-xs text-slate-100 leading-relaxed font-medium drop-shadow-sm">
                 {isAr
-                  ? 'اطلب عينات خشب إيجر ومفصلات بلوم لتفحص الجودة في منزلك. يسترد المبلغ كاملاً عند تعميد طلبك!'
-                  : 'Touch and feel premium Austrian Egger wood panels and Blum hardware before ordering. Fee refunded on your order!'}
+                  ? 'اطلب عينات خشب إيجر ومفصلات بلوم لتفحص الجودة في منزلك. يسترد المبلغ كاملاً عند تعميد أول طلب أثاث!'
+                  : 'Touch and feel premium Austrian Egger wood panels and Blum hardware before ordering. Fee 100% refunded on your first order!'}
               </p>
-              <div className="mt-4 flex items-baseline gap-2">
-                <span className="text-2xl font-black text-[#191919]">150 SAR</span>
-                <span className="text-xs text-[#707070] line-through">250 SAR</span>
-                <span className="text-xs font-bold text-[#86B817]">{isAr ? 'خصم ٤٠٪' : '40% OFF'}</span>
+
+              {/* Price Display Matching Hero Bar */}
+              <div className="pt-2 flex items-baseline gap-2.5 bg-black/60 backdrop-blur-md p-3 rounded-2xl border border-white/15 w-fit">
+                <span className="text-2xl font-black text-amber-300">150 SAR</span>
+                <span className="text-xs text-slate-300 line-through">250 SAR</span>
+                <span className="text-xs font-black text-[#86B817] bg-[#86B817]/20 px-2 py-0.5 rounded-full">
+                  {isAr ? 'خصم ٤٠٪' : '40% OFF'}
+                </span>
               </div>
             </div>
 
-            <Link
-              href={`/${locale}/sample-box`}
-              className="mt-6 w-full text-center bg-[#191919] hover:bg-black text-white py-2.5 px-4 rounded-full text-xs font-bold transition"
-            >
-              {isAr ? 'اطلب صندوق العينات الآن' : 'Order Sample Box Kit'}
-            </Link>
+            {/* Action Button Matching Hero Styling */}
+            <div className="relative z-10 pt-4">
+              <Link
+                href={`/${locale}/sample-box`}
+                className="w-full text-center block bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-slate-950 font-black py-3.5 px-6 rounded-full text-xs shadow-xl shadow-orange-500/30 transition transform hover:scale-[1.02] border border-amber-300"
+              >
+                {isAr ? 'اطلب صندوق العينات الآن (١٥٠ ر.س مستردة)' : 'Order Sample Box Kit (150 SAR Refundable)'}
+              </Link>
+            </div>
           </div>
         </div>
 
