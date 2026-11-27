@@ -20,6 +20,7 @@ export interface CabinetViewerProps {
   roughness?: number;
   openDoors?: boolean;
   showDoors?: boolean;
+  onToggleDoorOpen?: () => void;
 }
 
 /**
@@ -49,6 +50,8 @@ export function CabinetViewer(props: CabinetViewerProps) {
           shadow-mapSize-height={1024}
         />
         <directionalLight position={[-3, 2, -2]} intensity={0.35} />
+        {/* Front Soft Light illuminating interior directly */}
+        <directionalLight position={[0, 1.5, 4]} intensity={0.7} />
 
         <Suspense fallback={null}>
           <ParametricWardrobe {...props} shelvesCount={effectiveShelves} />

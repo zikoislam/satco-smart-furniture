@@ -196,6 +196,7 @@ export default function ConfiguratorPage() {
             roughness={shutterSwatch.roughness}
             openDoors={openDoors}
             showDoors={showDoors}
+            onToggleDoorOpen={() => setOpenDoors((prev) => !prev)}
           />
 
           <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-stone-200 bg-white p-3.5 text-xs text-stone-700 shadow-sm">
